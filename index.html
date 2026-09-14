@@ -44,8 +44,10 @@
   .topbar .wrap{display:flex;align-items:center;gap:14px;
     min-height:56px;overflow-x:auto;scrollbar-width:none}
   .topbar .wrap::-webkit-scrollbar{display:none}
-  .brandtag{font:600 13px/1 var(--mono);color:var(--brand-deep);
+  .brandtag{display:inline-flex;align-items:center;gap:8px;
+    font:600 13px/1 var(--mono);color:var(--brand-deep);
     white-space:nowrap;letter-spacing:0}
+  .brandtag img{height:22px;width:auto;display:block}
   .navchips{display:flex;gap:6px;white-space:nowrap}
   .navchips a{
     font-size:13px;font-weight:600;color:var(--ink-soft);
@@ -56,6 +58,7 @@
 
   /* ---------- hero ---------- */
   .hero{padding:46px 0 34px}
+  .hero-logo{height:44px;width:auto;display:block;margin-bottom:16px}
   .eyebrow{font:600 12px/1 var(--mono);letter-spacing:.04em;
     color:var(--brand);text-transform:uppercase}
   .hero h1{font-size:clamp(30px,6.6vw,46px);line-height:1.12;
@@ -194,7 +197,7 @@
 <!-- TOP NAV -->
 <div class="topbar">
   <div class="wrap">
-    <span class="brandtag">KONABIZ × HUONS</span>
+    <span class="brandtag"><img src="assets/huons-logo.png" alt="휴온스그룹 로고" />KONABIZ × HUONS</span>
     <nav class="navchips">
       <a href="#start">시작하기</a>
       <a href="#register">앱 등록</a>
@@ -208,6 +211,7 @@
 <!-- HERO -->
 <header class="hero">
   <div class="wrap">
+    <img class="hero-logo" src="assets/huons-logo.png" alt="휴온스그룹" />
     <div class="eyebrow">휴온스그룹 임직원용</div>
     <h1>코나비즈 이용 가이드<br><b>앱 설치부터 결제까지</b></h1>
     <p class="lead">복지카드를 받으셨나요? 코나카드 앱 등록부터 평소 결제, 그리고 알아두면 좋은
@@ -356,7 +360,6 @@
       <div class="step"><div class="dot">6</div>
         <h3>간편결제 등록 (KB Pay / 삼성·카카오·네이버페이)</h3>
         <p>신용카드 가맹점 어디서든 결제되고, 간편결제 앱으로 온라인 결제도 됩니다. 등록·결제 시 카드사는 <b>KB카드</b>, 비밀번호는 앱 비밀번호 <b>앞 4자리</b>입니다.</p>
-        <p class="muted">* 법인카드는 간편결제 제외 대상이며, 회사 내규에 따라 허용될 수 있습니다.</p>
         <figure class="shot-frame">
           <img class="shot" loading="lazy"
             src="https://cf.channel.io/document/spaces/3756/usermedia/66d935b9dd899f7a77c4"
@@ -390,7 +393,7 @@
     <div class="callout info">
       <div class="ttl">💡 결제가 안 될 때</div>
       회사가 정한 <b>사용처가 아닌 곳</b>에서 결제하면, 개인 잔액이 있으면 개인 잔액으로 결제되고
-      개인 잔액이 없으면 결제가 실패합니다. (법인카드는 개인 잔액 충전 불가)
+      개인 잔액이 없으면 결제가 실패합니다.
     </div>
   </div>
 </section>
@@ -406,7 +409,7 @@
         <p>개인이 충전한 잔액을 코나머니를 거쳐 다른 코나카드로 옮깁니다. <b>회사 포인트가 아닌 개인 충전 잔액</b> 이동 기능입니다.</p>
         <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EC%95%B1---%EB%8F%88-%EC%98%AE%EA%B8%B0%EA%B8%B0-f2c2447c" target="_blank" rel="noopener">자세히 보기 <span class="lk">↗</span></a></div>
       <div class="feat"><h4>내 캐시</h4>
-        <p>개인이 충전·사용하는 캐시입니다. 내 캐시는 회사 포인트와 <b>복합(동시) 결제가 되지 않습니다.</b></p>
+        <p>개인이 충전·사용하는 캐시입니다. 내 캐시는 회사 포인트와 <b>복합(동시) 결제가 가능합니다.</b></p>
         <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EC%95%B1---%EB%82%B4-%EC%BA%90%EC%8B%9C-%EC%82%AC%EC%9A%A9-571dc08a" target="_blank" rel="noopener">자세히 보기 <span class="lk">↗</span></a></div>
       <div class="feat"><h4>자동충전</h4>
         <p>잔액이 부족할 때 연결 계좌에서 자동으로 충전되도록 설정할 수 있습니다.</p>
