@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>코나비즈 임직원 이용 가이드 · 휴온스그룹</title>
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --ink:#11243A;
+    --ink-soft:#46607F;
+    --paper:#FFFFFF;
+    --surface:#F4F7FB;
+    --tint:#EAF1FA;
+    --line:#DCE6F1;
+    --brand:#1559D6;
+    --brand-deep:#0E3FA0;
+    --warn-bg:#FFF7EA;
+    --warn-line:#F1C879;
+    --warn-ink:#8A5300;
+    --danger:#C23A2B;
+    --danger-bg:#FCEDEB;
+    --danger-line:#EFC0B9;
+    --mono:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,
+           "Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);
+    background:var(--surface);line-height:1.62;
+    -webkit-font-smoothing:antialiased;letter-spacing:-0.01em;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;background:rgba(244,247,251,.86);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;gap:14px;
+    min-height:56px;overflow-x:auto;scrollbar-width:none}
+  .topbar .wrap::-webkit-scrollbar{display:none}
+  .brandtag{font:600 13px/1 var(--mono);color:var(--brand-deep);
+    white-space:nowrap;letter-spacing:0}
+  .navchips{display:flex;gap:6px;white-space:nowrap}
+  .navchips a{
+    font-size:13px;font-weight:600;color:var(--ink-soft);
+    text-decoration:none;padding:7px 11px;border-radius:999px;
+    border:1px solid transparent;transition:.15s;
+  }
+  .navchips a:hover{background:var(--tint);color:var(--brand-deep)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:46px 0 34px}
+  .eyebrow{font:600 12px/1 var(--mono);letter-spacing:.04em;
+    color:var(--brand);text-transform:uppercase}
+  .hero h1{font-size:clamp(30px,6.6vw,46px);line-height:1.12;
+    font-weight:800;margin:14px 0 12px;letter-spacing:-0.03em}
+  .hero h1 b{color:var(--brand)}
+  .hero p.lead{font-size:17px;color:var(--ink-soft);margin:0;max-width:46ch}
+
+  /* one-card + points signature */
+  .onecard{
+    margin-top:30px;display:grid;
+    grid-template-columns:auto 1fr;align-items:stretch;gap:0;
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;box-shadow:0 1px 0 rgba(17,36,58,.03)
+  }
+  .oc-card{padding:20px 22px;border-right:1px solid var(--line);
+    background:linear-gradient(180deg,var(--paper),var(--tint))}
+  .oc-card .kind{font:600 11px/1 var(--mono);letter-spacing:.03em;color:var(--brand)}
+  .oc-card .nm{font-size:20px;font-weight:800;margin:9px 0 4px;white-space:nowrap}
+  .oc-card .use{font-size:13px;color:var(--ink-soft)}
+  .oc-points{padding:18px 20px;display:flex;flex-direction:column;justify-content:center}
+  .oc-points .kind{font:600 11px/1 var(--mono);letter-spacing:.03em;color:var(--ink-soft);
+    margin-bottom:10px}
+  .oc-points .pill{font-size:13px;padding:7px 11px}
+
+  /* ---------- sections ---------- */
+  section{padding:34px 0}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+  .sec-no{font:700 13px/1 var(--mono);color:var(--brand);
+    border:1px solid var(--line);background:var(--paper);
+    padding:6px 9px;border-radius:8px}
+  h2.sec-title{font-size:24px;font-weight:800;margin:0;letter-spacing:-0.02em}
+  .sec-sub{color:var(--ink-soft);margin:2px 0 22px;font-size:15px}
+
+  /* step rail */
+  .rail{position:relative;margin-left:6px;padding-left:44px}
+  .rail::before{content:"";position:absolute;left:13px;top:6px;bottom:14px;
+    width:2px;background:linear-gradient(var(--brand),var(--tint))}
+  .step{position:relative;padding:0 0 22px}
+  .step .dot{position:absolute;left:-44px;top:0;width:28px;height:28px;
+    border-radius:50%;background:var(--brand);color:#fff;
+    font:700 13px/28px var(--mono);text-align:center;
+    box-shadow:0 0 0 4px var(--surface)}
+  .step h3{font-size:17px;font-weight:800;margin:2px 0 6px}
+  .step p{margin:0 0 8px;color:var(--ink);font-size:15px}
+  .step .muted{color:var(--ink-soft);font-size:14px}
+  .pill{display:inline-block;font:600 12px/1 var(--mono);color:var(--brand-deep);
+    background:var(--tint);padding:5px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  .pill.soon{color:var(--ink-soft);background:var(--surface);border:1px dashed var(--line)}
+  .docs-link{display:inline-flex;align-items:center;gap:5px;
+    font:700 12.5px/1 var(--mono);color:var(--brand);text-decoration:none;
+    letter-spacing:0;border-bottom:1px solid transparent;padding-bottom:2px}
+  .docs-link:hover{border-bottom-color:var(--brand)}
+  .docs-link + .docs-link{margin-left:14px}
+  .feat .docs-link{margin-top:10px}
+  .sec-links{margin:-12px 0 22px}
+
+  /* screenshot frame */
+  .shot-frame{margin:10px 0 2px;border:1px solid var(--line);border-radius:12px;
+    background:var(--paper);padding:10px;max-width:100%}
+  .shot-frame.qr{max-width:150px}
+  .shot-frame img.shot{display:block;width:100%;border-radius:7px}
+  .shot-frame figcaption{font:600 11px/1.4 var(--mono);color:var(--ink-soft);
+    margin-top:8px;letter-spacing:0}
+  .shot-frame.no-img img{display:none}
+  .shot-frame.no-img{background:var(--tint);border-style:dashed}
+
+  /* generic cards / grids */
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:18px 18px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .feat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
+  .feat h4{margin:0 0 5px;font-size:15px;font-weight:800}
+  .feat p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+
+  /* point table */
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;margin-top:14px;
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    font-size:14px}
+  .ptable th,.ptable td{padding:12px 14px;text-align:left;vertical-align:top}
+  .ptable th{font:600 11px/1 var(--mono);letter-spacing:.03em;color:var(--ink-soft);
+    background:var(--tint);border-bottom:1px solid var(--line)}
+  .ptable td{border-bottom:1px solid var(--line)}
+  .ptable tr:last-child td{border-bottom:0}
+  .ptable td b{font-weight:800}
+  .ptable td.soon,.ptable tr.soon td{color:var(--ink-soft)}
+  .ptable .tag{display:inline-block;font:600 11px/1 var(--mono);padding:4px 7px;
+    border-radius:5px;background:var(--tint);color:var(--brand-deep)}
+  .ptable .tag.soon{background:var(--surface);border:1px dashed var(--line);color:var(--ink-soft)}
+
+  /* callouts */
+  .callout{border-radius:12px;padding:15px 16px;font-size:14px;margin:14px 0}
+  .callout.info{background:var(--tint);border:1px solid var(--line)}
+  .callout.warn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink)}
+  .callout.danger{background:var(--danger-bg);border:1px solid var(--danger-line)}
+  .callout .ttl{font-weight:800;display:flex;align-items:center;gap:7px;margin-bottom:6px}
+  .callout.danger .ttl{color:var(--danger)}
+  .callout ul{margin:6px 0 0;padding-left:18px}
+  .callout li{margin:4px 0}
+
+  /* faq */
+  details.faq{background:var(--paper);border:1px solid var(--line);
+    border-radius:12px;padding:0 16px;margin:10px 0}
+  details.faq summary{cursor:pointer;list-style:none;padding:15px 0;
+    font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:12px}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary .q{font:700 13px/1 var(--mono);color:var(--brand)}
+  details.faq[open] summary{border-bottom:1px solid var(--line)}
+  details.faq .a{padding:13px 0 16px;font-size:14px;color:var(--ink-soft);line-height:1.6}
+  details.faq .mk{color:var(--brand-deep);font-weight:700}
+
+  /* footer */
+  footer{background:var(--ink);color:#C7D6E8;padding:34px 0;margin-top:20px}
+  footer .wrap{font-size:13.5px;line-height:1.7}
+  footer b{color:#fff}
+  footer .fnote{margin-top:10px;font:500 12px/1.6 var(--mono);color:#7E97B5}
+  footer a{color:#9FE0DA;text-decoration:none;font-weight:700;
+    border-bottom:1px solid rgba(159,224,218,.4)}
+  footer a:hover{border-bottom-color:#9FE0DA}
+  .flinks{margin:16px 0 4px;font-size:13.5px}
+
+  @media (max-width:640px){
+    .grid2{grid-template-columns:1fr}
+    .onecard{grid-template-columns:1fr}
+    .oc-card{border-right:0;border-bottom:1px solid var(--line);padding:16px 18px}
+    .oc-card .nm{font-size:18px}
+    .oc-points{padding:14px 18px}
+    .ptable{font-size:13px}
+    .ptable th,.ptable td{padding:10px 10px}
+    .hero{padding:34px 0 26px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="brandtag">KONABIZ × HUONS</span>
+    <nav class="navchips">
+      <a href="#start">시작하기</a>
+      <a href="#register">앱 등록</a>
+      <a href="#pay">결제하기</a>
+      <a href="#tips">유용한 기능</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">휴온스그룹 임직원용</div>
+    <h1>코나비즈 이용 가이드<br><b>앱 설치부터 결제까지</b></h1>
+    <p class="lead">복지카드를 받으셨나요? 코나카드 앱 등록부터 평소 결제, 그리고 알아두면 좋은
+      기능까지 이 한 장에 정리했습니다. 위에서부터 순서대로 따라오시면 됩니다.</p>
+
+    <!-- signature: one card, multiple point types -->
+    <div class="onecard" aria-label="복지카드와 포인트 종류">
+      <div class="oc-card">
+        <div class="kind">DOMESTIC · 국내 전용</div>
+        <div class="nm">복지카드</div>
+        <div class="use">회사에서 지급 · 국내 가맹점 결제</div>
+      </div>
+      <div class="oc-points">
+        <div class="kind">이 카드에 담기는 포인트</div>
+        <div>
+          <span class="pill">식대 포인트</span>
+          <span class="pill soon">야근식대 · 추가 예정</span>
+          <span class="pill soon">복지포인트 · 추가 예정</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 0. START -->
+<section id="start">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">00</span>
+      <h2 class="sec-title">시작하기 전에</h2></div>
+    <p class="sec-sub">복지카드는 회사가 지급한 <b>포인트(식대 등)</b>를 쓰는 카드입니다. 먼저 코나카드 앱에 카드를 등록해야 잔액·내역 확인과 결제가 가능합니다.</p>
+    <div class="grid2">
+      <div class="feat"><h4>① 코나카드 앱이 기본</h4>
+        <p>잔액·포인트 확인, 결제, 분실신고까지 모두 코나카드 앱에서 합니다. 가장 먼저 설치하세요.</p></div>
+      <div class="feat"><h4>② 비밀번호 앞 4자리 = 카드 비밀번호</h4>
+        <p>가입 시 정한 6자리 중 <b>앞 4자리</b>가 결제·간편결제에 쓰이는 카드 비밀번호입니다.</p></div>
+      <div class="feat"><h4>③ 사용처·한도는 회사 정책</h4>
+        <p>쓸 수 있는 곳과 한도는 회사 설정에 따라 달라집니다. 자세한 건 회사 복지담당자에게 문의하세요.</p></div>
+      <div class="feat"><h4>④ 포인트 종류별로 사용처가 다를 수 있음</h4>
+        <p>지급된 포인트 종류에 따라 쓸 수 있는 곳·시간이 다를 수 있습니다. 세부 기준은 회사 안내를 따르세요.</p></div>
+    </div>
+
+    <!-- TODO: 사용처 확정 후 '사용처' 열 입력 / 야근식대·복지포인트 지급 시작 시 해당 행 갱신 -->
+    <table class="ptable" aria-label="포인트 종류별 안내">
+      <thead><tr><th>포인트</th><th>사용처</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>식대 포인트</b></td>
+          <td>회사 안내 사항 참고</td>
+          <td><span class="tag">지급 중</span></td>
+        </tr>
+        <tr class="soon">
+          <td><b>야근식대</b></td>
+          <td>—</td>
+          <td><span class="tag soon">추가 예정</span></td>
+        </tr>
+        <tr class="soon">
+          <td><b>복지포인트</b></td>
+          <td>—</td>
+          <td><span class="tag soon">추가 예정</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1. REGISTER -->
+<section id="register">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">01</span>
+      <h2 class="sec-title">코나카드 앱 등록</h2></div>
+    <p class="sec-sub">설치 → 회원가입 → 카드 등록 순서로 진행합니다. 카드 등록 후 계좌까지 연결하면 결제 한도가 올라갑니다.</p>
+    <div class="sec-links">
+      <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EC%95%B1-%EB%93%B1%EB%A1%9D-%EB%B0%A9%EB%B2%95-4318ac5a" target="_blank" rel="noopener">코나카드 앱 등록 방법 (공식 가이드) <span class="lk">↗</span></a>
+    </div>
+
+    <div class="rail">
+      <div class="step"><div class="dot">1</div>
+        <h3>코나카드 앱 설치</h3>
+        <p>App Store / Play 스토어에서 <b>‘코나카드’</b> 검색 후 설치합니다.</p>
+        <figure class="shot-frame qr">
+          <img class="shot" loading="lazy"
+            src="https://cf.channel.io/document/spaces/3756/articles/31843/revisions/201158/usermedia/67c80a05bff2f38a5357"
+            alt="코나카드 앱 설치 화면" />
+          <figcaption>코나카드 앱 검색 · 설치</figcaption>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">2</div>
+        <h3>회원가입</h3>
+        <p>앱 안내에 따라 가입을 진행합니다. 비밀번호 6자리를 설정하면 그중
+          <b>앞 4자리가 카드(결제) 비밀번호</b>로 함께 쓰입니다.</p>
+        <figure class="shot-frame">
+          <img class="shot" loading="lazy"
+            src="https://cf.channel.io/document/spaces/3756/usermedia/66d93577ceecc70cfae3"
+            alt="회원가입 화면" />
+          <figcaption>회원가입 · 비밀번호 설정</figcaption>
+        </figure>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8-5c6bf04a" target="_blank" rel="noopener">코나카드 비밀번호 안내 <span class="lk">↗</span></a>
+      </div>
+
+      <div class="step"><div class="dot">3</div>
+        <h3>복지카드 등록</h3>
+        <p>실물카드 뒷면 <b>바코드를 촬영</b>하면 바로 등록됩니다. 카드번호를 직접 입력해 등록할 수도 있습니다. 등록하면 포인트 잔액·지급내역이 보입니다.</p>
+        <figure class="shot-frame">
+          <img class="shot" loading="lazy"
+            src="https://cf.channel.io/document/spaces/3756/usermedia/66d9358825788fb24d64"
+            alt="카드 등록 화면" />
+          <figcaption>바코드 촬영으로 카드 등록</figcaption>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">4</div>
+        <h3>소득공제 신청</h3>
+        <p>코나카드 사용분은 <b>소득공제 30%</b>를 받을 수 있으니 미리 신청하세요.</p>
+        <figure class="shot-frame">
+          <img class="shot" loading="lazy"
+            src="https://cf.channel.io/document/spaces/3756/usermedia/66d93596f179c18c1fe0"
+            alt="소득공제 신청 화면" />
+          <figcaption>소득공제 신청</figcaption>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">5</div>
+        <h3>계좌 연결 / 한도 상향</h3>
+        <p>최초 결제한도는 <b>50만원</b>입니다. 본인 명의 계좌를 연결하면
+          <b>200만원으로 즉시 상향</b>되고, 개인 충전 잔액과 회사 포인트의 복합 결제도 가능해집니다.</p>
+        <figure class="shot-frame">
+          <img class="shot" loading="lazy"
+            src="https://cf.channel.io/document/spaces/3756/usermedia/66d935a846bdc5d8b283"
+            alt="계좌 연결 화면" />
+          <figcaption>계좌 연결 · 한도 200만원</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PAY -->
+<section id="pay">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">02</span>
+      <h2 class="sec-title">결제하기</h2></div>
+    <p class="sec-sub">실물카드는 물론 온라인·간편결제까지 됩니다. 카드사 선택 화면에서는 <b>KB카드</b>를 고르세요.</p>
+
+    <div class="rail">
+      <div class="step"><div class="dot">6</div>
+        <h3>간편결제 등록 (KB Pay / 삼성·카카오·네이버페이)</h3>
+        <p>신용카드 가맹점 어디서든 결제되고, 간편결제 앱으로 온라인 결제도 됩니다. 등록·결제 시 카드사는 <b>KB카드</b>, 비밀번호는 앱 비밀번호 <b>앞 4자리</b>입니다.</p>
+        <p class="muted">* 법인카드는 간편결제 제외 대상이며, 회사 내규에 따라 허용될 수 있습니다.</p>
+        <figure class="shot-frame">
+          <img class="shot" loading="lazy"
+            src="https://cf.channel.io/document/spaces/3756/usermedia/66d935b9dd899f7a77c4"
+            alt="간편결제 등록 화면" />
+          <figcaption>간편결제 등록 (KB카드 선택)</figcaption>
+        </figure>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EA%B0%84%ED%8E%B8%EA%B2%B0%EC%A0%9C--3ddfa6d0" target="_blank" rel="noopener">간편결제 안내 <span class="lk">↗</span></a>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/KB-PAY-%EC%95%B1---%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EB%93%B1%EB%A1%9D-a2598574" target="_blank" rel="noopener">KB PAY 코나카드 등록 <span class="lk">↗</span></a>
+      </div>
+
+      <div class="step"><div class="dot">7</div>
+        <h3>QR / 바코드 결제</h3>
+        <p>아래 직가맹점에서는 실물카드 없이 앱으로 바로 결제할 수 있습니다.</p>
+        <p><span class="pill">GS25</span><span class="pill">세븐일레븐</span><span class="pill">이마트24</span><span class="pill">커피빈</span><span class="pill">부어치킨</span></p>
+        <p class="muted">위 직가맹점에서만 QR/바코드 결제가 됩니다.</p>
+        <figure class="shot-frame">
+          <img class="shot" loading="lazy"
+            src="https://cf.channel.io/document/spaces/3756/usermedia/66d935e69ed6f9a3b9c9"
+            alt="QR 바코드 결제 화면" />
+          <figcaption>앱 바코드로 편의점 결제</figcaption>
+        </figure>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EB%AC%B4%EC%A0%9C%ED%95%9C-%ED%95%A0%EC%9D%B8-%ED%98%9C%ED%83%9D-50ba396b" target="_blank" rel="noopener">무제한 할인 혜택 안내 <span class="lk">↗</span></a>
+      </div>
+
+      <div class="step"><div class="dot">8</div>
+        <h3>사용내역 확인</h3>
+        <p>카드명 <b>아래 금액</b>을 누르면 결제 내역, 카드명 <b>위 포인트</b>를 누르면 <b>포인트 종류별</b> 사용내역을 볼 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="ttl">💡 결제가 안 될 때</div>
+      회사가 정한 <b>사용처가 아닌 곳</b>에서 결제하면, 개인 잔액이 있으면 개인 잔액으로 결제되고
+      개인 잔액이 없으면 결제가 실패합니다. (법인카드는 개인 잔액 충전 불가)
+    </div>
+  </div>
+</section>
+
+<!-- 3. TIPS -->
+<section id="tips">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">03</span>
+      <h2 class="sec-title">알아두면 좋은 기능</h2></div>
+    <p class="sec-sub">필요할 때 꺼내 쓰는 편의 기능들입니다.</p>
+    <div class="grid2">
+      <div class="feat"><h4>돈 옮기기</h4>
+        <p>개인이 충전한 잔액을 코나머니를 거쳐 다른 코나카드로 옮깁니다. <b>회사 포인트가 아닌 개인 충전 잔액</b> 이동 기능입니다.</p>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EC%95%B1---%EB%8F%88-%EC%98%AE%EA%B8%B0%EA%B8%B0-f2c2447c" target="_blank" rel="noopener">자세히 보기 <span class="lk">↗</span></a></div>
+      <div class="feat"><h4>내 캐시</h4>
+        <p>개인이 충전·사용하는 캐시입니다. 내 캐시는 회사 포인트와 <b>복합(동시) 결제가 되지 않습니다.</b></p>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EC%95%B1---%EB%82%B4-%EC%BA%90%EC%8B%9C-%EC%82%AC%EC%9A%A9-571dc08a" target="_blank" rel="noopener">자세히 보기 <span class="lk">↗</span></a></div>
+      <div class="feat"><h4>자동충전</h4>
+        <p>잔액이 부족할 때 연결 계좌에서 자동으로 충전되도록 설정할 수 있습니다.</p>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EC%95%B1---%EC%9E%90%EB%8F%99%EC%B6%A9%EC%A0%84-%EC%84%A4%EC%A0%95-0f426934" target="_blank" rel="noopener">자세히 보기 <span class="lk">↗</span></a></div>
+      <div class="feat"><h4>잔액 환불</h4>
+        <p>개인이 충전한 잔액은 [카드 환불신청/조회]에서 환불할 수 있습니다. 신청 후 연결 계좌로 3일 이내 입금됩니다.</p>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EC%95%B1---%EC%9E%94%EC%95%A1-%ED%99%98%EB%B6%88-cc27571b" target="_blank" rel="noopener">자세히 보기 <span class="lk">↗</span></a></div>
+      <div class="feat"><h4>카드 분실</h4>
+        <p>분실 시 앱에서 즉시 분실신고하고, 회사 복지담당자에게 재발급을 요청하세요. 잔여 포인트는 새 카드로 이관됩니다.</p>
+        <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EC%B9%B4%EB%93%9C-%EB%B6%84%EC%8B%A4-0816f49b" target="_blank" rel="noopener">자세히 보기 <span class="lk">↗</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">04</span>
+      <h2 class="sec-title">자주 묻는 질문</h2></div>
+
+    <details class="faq"><summary><span>카드 비밀번호가 뭐였죠?</span><span class="q">Q</span></summary>
+      <div class="a">회원가입 때 정한 <span class="mk">6자리 중 앞 4자리</span>가 카드(결제) 비밀번호입니다.</div></details>
+
+    <details class="faq"><summary><span>결제가 자꾸 실패해요.</span><span class="q">Q</span></summary>
+      <div class="a">회사가 정한 <span class="mk">사용처가 아닌 곳</span>이거나 잔액이 부족한 경우입니다. 개인 잔액이 있으면 개인 잔액으로 결제되고, 없으면 실패합니다. 사용처·한도는 회사 복지담당자에게 확인하세요.</div></details>
+
+    <details class="faq"><summary><span>식대 포인트로 다른 곳에서도 결제되나요?</span><span class="q">Q</span></summary>
+      <div class="a">회사가 정한 <span class="mk">사용처에서만</span> 됩니다. 사용처 밖에서는 개인 잔액이 있을 때만 개인 잔액으로 결제됩니다.</div></details>
+
+    <details class="faq"><summary><span>야근식대·복지포인트는 언제부터 쓸 수 있나요?</span><span class="q">Q</span></summary>
+      <div class="a"><span class="mk">추가 예정</span>입니다. 지급 시작 시 회사에서 별도 안내드립니다.</div></details>
+    <!-- TODO: 야근식대/복지포인트 지급 시작 시 포인트 차감 순서·사용 시간대 FAQ 추가 -->
+
+    <details class="faq"><summary><span>카드를 잃어버렸어요.</span><span class="q">Q</span></summary>
+      <div class="a">코나카드 앱에서 <span class="mk">즉시 분실신고</span> 후, 회사 복지담당자에게 재발급을 요청하세요. 잔여 포인트는 새 카드로 이관됩니다.</div></details>
+
+    <details class="faq"><summary><span>소득공제는 꼭 신청해야 하나요?</span><span class="q">Q</span></summary>
+      <div class="a">복지카드 사용분은 소득공제 30% 혜택이 있어 <span class="mk">미리 신청</span>하시는 게 좋습니다.</div></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>문의</b><br>
+    · 사용처·한도·지급 등 운영 정책 : <b>회사 복지담당자</b><br>
+    · 앱·카드 이용 문의 : 코나카드 앱 내 <b>1:1 문의</b><br>
+    <div class="flinks">
+      <a href="https://konabizcard.com/" target="_blank" rel="noopener">코나비즈 공식 사이트 ↗</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="https://docs.channel.io/konabiz/ko/categories/-%EC%9E%84%EC%A7%81%EC%9B%90-%EA%B0%80%EC%9D%B4%EB%93%9C-10fb22be" target="_blank" rel="noopener">전체 임직원 가이드 ↗</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="https://docs.channel.io/konabiz/ko/articles/%EC%9E%84%EC%A7%81%EC%9B%90-%ED%98%9C%ED%83%9D--9381f054" target="_blank" rel="noopener">임직원 혜택 모아보기 ↗</a>
+    </div>
+    <div class="fnote">KONABIZ Employee Guide · 휴온스그룹<br>
+      본 가이드는 코나비즈 공식 임직원 가이드를 기반으로 작성되었습니다.</div>
+  </div>
+</footer>
+
+<script>
+  // 스크린샷 이미지가 로드되지 않으면 프레임만 깔끔히 표시
+  document.querySelectorAll('img.shot').forEach(function(img){
+    img.addEventListener('error', function(){
+      var f = img.closest('.shot-frame');
+      if(f){ f.classList.add('no-img'); }
+    });
+  });
+</script>
+</body>
+</html>

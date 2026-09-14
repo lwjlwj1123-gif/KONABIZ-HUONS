@@ -1,0 +1,8 @@
+services:
+  # 무료 Static Site (Render의 정적 사이트는 항상 무료, 별도 유료 인스턴스 없음)
+  - type: web
+    name: konabiz-huons-guide
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
