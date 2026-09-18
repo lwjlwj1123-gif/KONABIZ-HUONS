@@ -65,6 +65,9 @@
     font-weight:800;margin:14px 0 12px;letter-spacing:-0.03em}
   .hero h1 b{color:var(--brand)}
   .hero p.lead{font-size:19px;color:var(--ink-soft);margin:0}
+  .hero-top{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start}
+  .hero-card{width:200px;height:auto;border-radius:12px;
+    box-shadow:0 8px 24px rgba(17,36,58,.16)}
 
   /* one-card + points signature */
   .onecard{
@@ -147,6 +150,7 @@
   .ptable .tag{display:inline-block;font:600 13px/1 var(--mono);padding:4px 7px;
     border-radius:5px;background:var(--tint);color:var(--brand-deep)}
   .ptable .tag.soon{background:var(--surface);border:1px dashed var(--line);color:var(--ink-soft)}
+  .ptable .ptable-note{display:inline-block;margin-top:6px;font-size:14px;color:var(--ink-soft)}
 
   /* callouts */
   .callout{border-radius:12px;padding:15px 16px;font-size:16px;margin:14px 0}
@@ -188,6 +192,8 @@
     .ptable{font-size:15px}
     .ptable th,.ptable td{padding:10px 10px}
     .hero{padding:34px 0 26px}
+    .hero-top{grid-template-columns:1fr;gap:20px}
+    .hero-card{width:150px}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -211,13 +217,18 @@
 <!-- HERO -->
 <header class="hero">
   <div class="wrap">
-    <img class="hero-logo" src="assets/huons-logo.png" alt="휴온스그룹" />
-    <div class="eyebrow">휴온스그룹 임직원용</div>
-    <h1>코나비즈 이용 가이드<br><b>앱 설치부터 결제까지</b></h1>
-    <p class="lead">복지카드를 받으셨나요?<br>
-      코나카드 앱 등록부터 평소 결제, 그리고 알아두면 좋은 기능까지<br>
-      이 한 장에 정리했습니다.<br>
-      위에서부터 순서대로 따라오시면 됩니다.</p>
+    <div class="hero-top">
+      <div>
+        <img class="hero-logo" src="assets/huons-logo.png" alt="휴온스그룹" />
+        <div class="eyebrow">휴온스그룹 임직원용</div>
+        <h1>코나비즈 이용 가이드<br><b>앱 설치부터 결제까지</b></h1>
+        <p class="lead">복지카드를 받으셨나요?<br>
+          코나카드 앱 등록부터 평소 결제, 그리고 알아두면 좋은 기능까지<br>
+          이 한 장에 정리했습니다.<br>
+          위에서부터 순서대로 따라오시면 됩니다.</p>
+      </div>
+      <img class="hero-card" src="assets/huons-card.png" alt="휴온스그룹 복지카드" />
+    </div>
 
     <!-- signature: one card, multiple point types -->
     <div class="onecard" aria-label="복지카드와 포인트 종류">
@@ -229,7 +240,7 @@
       <div class="oc-points">
         <div class="kind">이 카드에 담기는 포인트</div>
         <div>
-          <span class="pill">식대 포인트</span>
+          <span class="pill">점심식대</span>
           <span class="pill soon">야근식대 · 추가 예정</span>
           <span class="pill soon">복지포인트 · 추가 예정</span>
         </div>
@@ -255,14 +266,15 @@
         <p>지급된 포인트 종류에 따라 쓸 수 있는 곳·시간이 다를 수 있습니다.<br>세부 기준은 회사 안내를 따르세요.</p></div>
     </div>
 
-    <!-- TODO: 사용처 확정 후 '사용처' 열 입력 / 야근식대·복지포인트 지급 시작 시 해당 행 갱신 -->
+    <!-- TODO: 야근식대·복지포인트 지급 시작 시 해당 행 갱신 -->
     <table class="ptable" aria-label="포인트 종류별 안내">
       <thead><tr><th>포인트</th><th>사용처</th><th>비고</th></tr></thead>
       <tbody>
         <tr>
-          <td><b>식대 포인트</b></td>
-          <td>회사 안내 사항 참고</td>
-          <td><span class="tag">지급 중</span></td>
+          <td><b>점심식대</b></td>
+          <td>음식점에서만 사용 가능합니다.<br>
+            <span class="ptable-note">음식점인데 결제가 실패하는 경우, 업종이 음식점으로 설정되지 않은 가맹점일 수 있습니다.<br>이 경우 휴온스 담당자에게 확인 부탁드립니다.</span></td>
+          <td><span class="tag">10월부터 적용</span><br><span class="ptable-note">일 1만원 지급<br>지급 수단만 식권대장 → 코나비즈로 변경</span></td>
         </tr>
         <tr class="soon">
           <td><b>야근식대</b></td>
@@ -438,8 +450,8 @@
     <details class="faq"><summary><span>결제가 자꾸 실패해요.</span><span class="q">Q</span></summary>
       <div class="a">회사가 정한 <span class="mk">사용처가 아닌 곳</span>이거나 잔액이 부족한 경우입니다.<br>개인 잔액이 있으면 개인 잔액으로 결제되고, 없으면 실패합니다.<br>사용처·한도는 회사 복지담당자에게 확인하세요.</div></details>
 
-    <details class="faq"><summary><span>식대 포인트로 다른 곳에서도 결제되나요?</span><span class="q">Q</span></summary>
-      <div class="a">회사가 정한 <span class="mk">사용처에서만</span> 됩니다.<br>사용처 밖에서는 개인 잔액이 있을 때만 개인 잔액으로 결제됩니다.</div></details>
+    <details class="faq"><summary><span>점심식대로 다른 곳에서도 결제되나요?</span><span class="q">Q</span></summary>
+      <div class="a"><span class="mk">음식점에서만</span> 사용 가능합니다.<br>음식점 밖에서는 개인 잔액이 있을 때만 개인 잔액으로 결제됩니다.<br>음식점인데 결제가 실패하면 업종이 음식점으로 설정되지 않은 가맹점일 수 있으니 휴온스 담당자에게 확인해 주세요.</div></details>
 
     <details class="faq"><summary><span>야근식대·복지포인트는 언제부터 쓸 수 있나요?</span><span class="q">Q</span></summary>
       <div class="a"><span class="mk">추가 예정</span>입니다.<br>지급 시작 시 회사에서 별도 안내드립니다.</div></details>
