@@ -200,6 +200,17 @@
     .hero-card{width:150px}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  /* ---------- print / PDF ---------- */
+  @media print{
+    .topbar{display:none}
+    body{background:#fff}
+    .hero{padding-top:20px}
+    .hero-card{width:150px}
+    section{break-before:page}
+    .rail::before{display:none}
+    .sec-head,.feat,.step,.callout,.ptable,details.faq,.onecard{break-inside:avoid}
+  }
 </style>
 </head>
 <body>
