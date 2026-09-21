@@ -66,6 +66,10 @@
   .hero h1 b{color:var(--brand)}
   .hero p.lead{font-size:19px;color:var(--ink-soft);margin:0}
   .hero-top{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start}
+  .pdf-btn{display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+    padding:11px 18px;border-radius:999px;background:var(--brand);color:#fff;
+    font-size:15px;font-weight:700;text-decoration:none;transition:.15s}
+  .pdf-btn:hover{background:var(--brand-deep)}
   .hero-card{width:200px;height:auto;border-radius:12px;
     box-shadow:0 8px 24px rgba(17,36,58,.16)}
 
@@ -203,13 +207,16 @@
 
   /* ---------- print / PDF ---------- */
   @media print{
-    .topbar{display:none}
+    .topbar,.pdf-btn{display:none}
     body{background:#fff}
     .hero{padding-top:20px}
     .hero-card{width:150px}
-    section{break-before:page}
+    .shot-frame{max-width:70%}
+    #register{break-before:page}
+    #tips{break-inside:avoid}
     .rail::before{display:none}
-    .sec-head,.feat,.step,.callout,.ptable,details.faq,.onecard{break-inside:avoid}
+    .sec-head,.sec-sub,.sec-links,.step h3,.step p{break-after:avoid}
+    .sec-head,.feat,.shot-frame,.callout,.ptable,details.faq,.onecard{break-inside:avoid}
   }
 </style>
 </head>
@@ -241,6 +248,7 @@
           코나카드 앱 등록부터 평소 결제, 그리고 알아두면 좋은 기능까지<br>
           이 한 장에 정리했습니다.<br>
           위에서부터 순서대로 따라오시면 됩니다.</p>
+        <a class="pdf-btn" href="assets/konabiz-huons-guide.pdf" download="KONABIZ_휴온스그룹_이용가이드.pdf">⬇ PDF 다운로드</a>
       </div>
       <img class="hero-card" src="assets/huons-card.png" alt="휴온스그룹 복지카드" />
     </div>
