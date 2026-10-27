@@ -22,9 +22,9 @@
     --danger:#C23A2B;
     --danger-bg:#FCEDEB;
     --danger-line:#EFC0B9;
-    --mono:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;
     --sans:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,
            "Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+    --mono:var(--sans);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -46,7 +46,7 @@
   .topbar .wrap::-webkit-scrollbar{display:none}
   .brandtag{display:inline-flex;align-items:center;gap:8px;
     font:600 15px/1 var(--mono);color:var(--brand-deep);
-    white-space:nowrap;letter-spacing:0}
+    white-space:nowrap;letter-spacing:0;text-decoration:none}
   .brandtag img{height:22px;width:auto;display:block}
   .navchips{display:flex;gap:6px;white-space:nowrap}
   .navchips a{
@@ -315,7 +315,7 @@
 <!-- TOP NAV -->
 <div class="topbar">
   <div class="wrap">
-    <span class="brandtag"><img src="assets/huons-logo.png" alt="휴온스그룹 로고" />KONABIZ × HUONS</span>
+    <a class="brandtag" href="#"><img src="assets/huons-logo.png" alt="휴온스그룹 로고" />KONABIZ × HUONS</a>
     <nav class="navchips">
       <a href="#start">시작하기</a>
       <a href="#register">코나카드 앱 등록</a>
@@ -1319,12 +1319,19 @@
     var a = e.target.closest('a[href^="#"]');
     if(!a){ return; }
     var hash = a.getAttribute('href');
-    if(hash.length < 2){ return; }
     e.preventDefault();
+    if(hash.length < 2){ toTop(); return; }
     history.pushState(null, '', hash);
     jump(hash);
   });
-  if(location.hash){ jump(location.hash); }
+  // 로고를 누르거나 새로고침하면 항상 맨 위(메인)에서 시작
+  function toTop(){
+    history.replaceState(null, '', location.pathname + location.search);
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }
+  if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+  if(location.hash){ history.replaceState(null, '', location.pathname + location.search); }
+  window.scrollTo(0, 0);
 </script>
 
 <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=ojrpb7is2h"></script>
