@@ -71,6 +71,8 @@
     padding:11px 18px;border-radius:999px;background:var(--brand);color:#fff;
     font-size:15px;font-weight:700;text-decoration:none;transition:.15s}
   .pdf-btn:hover{background:var(--brand-deep)}
+  .pdf-btn.old{margin-left:8px;background:#fff;color:var(--brand);box-shadow:inset 0 0 0 1.5px var(--brand)}
+  .pdf-btn.old:hover{background:var(--tint)}
   .hero-card{width:200px;height:auto;border-radius:12px;
     box-shadow:0 8px 24px rgba(17,36,58,.16)}
 
@@ -92,7 +94,7 @@
   .oc-points .pill{font-size:15px;padding:7px 11px}
 
   /* ---------- sections ---------- */
-  section{padding:34px 0}
+  section{padding:34px 0;scroll-margin-top:72px}
   .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
   .sec-no{font:700 15px/1 var(--mono);color:var(--brand);
     border:1px solid var(--line);background:var(--paper);
@@ -127,11 +129,80 @@
   .shot-frame{margin:10px 0 2px;border:1px solid var(--line);border-radius:12px;
     background:var(--paper);padding:10px;max-width:100%}
   .shot-frame.qr{max-width:150px}
-  .shot-frame img.shot{display:block;width:100%;border-radius:7px}
+  .shot-frame.app{max-width:258px}
+  .mark-wrap{position:relative;line-height:0}
+  .mk-up{position:absolute;left:50%;transform:translateX(-50%);color:#E5342E;
+    font:900 30px/1 system-ui;pointer-events:none;
+    text-shadow:0 0 6px #fff,0 0 6px #fff,0 0 10px #fff}
+  .mk-box{position:absolute;border:4px solid #E5342E;border-radius:12px;
+    box-shadow:0 0 0 3px rgba(229,52,46,.16);pointer-events:none}
+  .sub-h{font-size:21px;font-weight:800;margin:30px 0 4px;
+    padding-top:24px;border-top:1px solid var(--line)}
+  .shots{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}
+  .shot-frame img.shot{display:block;width:100%;height:auto;border-radius:7px}
   .shot-frame figcaption{font:600 13px/1.4 var(--mono);color:var(--ink-soft);
     margin-top:8px;letter-spacing:0}
   .shot-frame.no-img img{display:none}
   .shot-frame.no-img{background:var(--tint);border-style:dashed}
+
+  /* 사용처 지도 */
+  .pl-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 10px}
+  .pl-search{flex:1 1 220px;min-width:180px;padding:10px 12px;font:inherit;font-size:15px;
+    border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+  .pl-chip{padding:8px 13px;font:600 14px/1 var(--sans);color:var(--ink-soft);cursor:pointer;
+    background:var(--paper);border:1px solid var(--line);border-radius:999px}
+  .pl-chip[aria-pressed="true"]{color:#fff;background:var(--brand);border-color:var(--brand)}
+  .pl-here{color:var(--brand-deep);border-color:var(--brand)}
+  .pl-me{display:block;width:18px;height:18px;border-radius:50%;background:#1559D6;
+    border:3px solid #fff;box-shadow:0 0 0 6px rgba(21,89,214,.22)}
+  #pl-map{height:440px;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:var(--tint)}
+  .pl-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    flex-wrap:wrap;margin:10px 0 6px}
+  .pl-count{font:600 14px/1.5 var(--mono);color:var(--ink-soft);margin:0}
+  .pl-view{display:flex;align-items:center;gap:6px;font:600 14px/1.5 var(--sans);
+    color:var(--ink-soft);cursor:pointer;user-select:none}
+  .pl-view input{width:16px;height:16px;accent-color:var(--brand)}
+  .pl-list{max-height:340px;overflow:auto;border:1px solid var(--line);border-radius:14px;
+    background:var(--paper)}
+  .pl-item{display:block;width:100%;text-align:left;padding:11px 14px;cursor:pointer;
+    background:none;border:0;border-bottom:1px solid var(--line);font:inherit;color:var(--ink)}
+  .pl-item:last-child{border-bottom:0}
+  .pl-item:hover{background:var(--tint)}
+  .pl-item b{font-size:16px}
+  .pl-item .pl-meta{display:block;margin-top:3px;font-size:14px;color:var(--ink-soft)}
+  .pl-item .pl-tag{display:inline-block;margin-right:6px;padding:2px 7px;border-radius:999px;
+    font:600 12px/1.6 var(--mono);color:var(--brand-deep);background:var(--tint)}
+  /* 누르는 면은 넓게, 보이는 점은 작게 */
+  .pl-pin{display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;font-style:normal;cursor:pointer}
+  .pl-pin::before{content:'';width:18px;height:18px;border-radius:50%;
+    background:#1559D6;border:3px solid #fff;
+    box-shadow:0 2px 5px rgba(17,36,58,.45)}
+  .pl-pin:hover::before{background:#0E3FA0;transform:scale(1.15)}
+  .pl-home{display:flex;align-items:center;justify-content:center;width:34px;height:34px;
+    border-radius:50%;background:#C23A2B;color:#fff;font:700 11px/1 var(--sans);
+    font-style:normal;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .pl-pop{max-width:240px;padding:10px 13px;border-radius:10px;background:var(--paper);
+    border:1px solid var(--line);font:400 14px/1.5 var(--sans);color:var(--ink);
+    box-shadow:0 6px 18px rgba(17,36,58,.14)}
+  .pl-pop b{display:block;font-size:15px;margin-bottom:3px}
+  .pl-print{display:none}
+  @media print{
+    #pl-map,.pl-tools,.pl-bar,.pl-list{display:none}
+    .pl-print{display:block;margin-top:18px}
+    .pl-ph{font:800 19px/1.4 var(--sans);color:var(--ink);margin:0 0 4px}
+    .pl-pa{font:800 16px/1.4 var(--sans);color:var(--brand-deep);
+      margin:16px 0 2px;padding-top:8px;border-top:2px solid var(--brand);break-after:avoid}
+    .pl-pa span,.pl-pc span{font-weight:600;color:var(--ink-soft)}
+    .pl-pc{font:700 13px/1.4 var(--sans);color:var(--ink);margin:10px 0 3px;break-after:avoid}
+    .pl-pn{font:400 11px/1.5 var(--sans);color:var(--ink-soft);margin:0 0 6px}
+    .pl-pl{columns:2;column-gap:20px;list-style:none;margin:0;padding:0}
+    .pl-pl li{break-inside:avoid;font:400 10.5px/1.45 var(--sans);
+      margin:0 0 3px;padding-bottom:3px;border-bottom:1px dotted #D9E2EC}
+    .pl-pl li b{display:block;font-weight:700;color:var(--ink)}
+    .pl-pl li span{color:var(--ink-soft)}
+  }
 
   /* generic cards / grids */
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;
@@ -231,6 +302,10 @@
       <a href="#start">시작하기</a>
       <a href="#register">앱 등록</a>
       <a href="#pay">결제하기</a>
+      <a href="#meal">야근식대 신청</a>
+      <a href="#guest">외부손님 식대 신청</a>
+      <a href="#approve">임직원 식대 승인</a>
+      <a href="#places">사용처</a>
       <a href="#tips">유용한 기능</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -245,12 +320,12 @@
         <img class="hero-logo" src="assets/huons-logo.png" alt="휴온스그룹" />
         <div class="eyebrow">휴온스그룹 임직원용</div>
         <h1>코나비즈 이용 가이드<br><b>앱 설치부터 결제까지</b></h1>
-        <div class="asof">2026.09.21 기준 작성</div>
+        <div class="asof">2026.10.27 기준 작성</div>
         <p class="lead">복지카드를 받으셨나요?<br>
           코나카드 앱 등록부터 평소 결제, 그리고 알아두면 좋은 기능까지<br>
           이 한 장에 정리했습니다.<br>
           위에서부터 순서대로 따라오시면 됩니다.</p>
-        <a class="pdf-btn" href="assets/konabiz-huons-guide_2026.09.21.pdf" download="KONABIZ_휴온스그룹_이용가이드_2026.09.21.pdf">⬇ PDF 다운로드</a>
+        <a class="pdf-btn" href="assets/konabiz-huons-guide_2026.10.27.pdf" download="KONABIZ_휴온스그룹_이용가이드_2026.10.27.pdf">⬇ PDF 다운로드</a><a class="pdf-btn old" href="assets/konabiz-huons-guide_2026.09.21.pdf" download="KONABIZ_휴온스그룹_이용가이드_2026.09.21.pdf">26.09.21 ver.</a>
       </div>
       <img class="hero-card" src="assets/huons-card.png" alt="휴온스그룹 복지카드" />
     </div>
@@ -266,7 +341,8 @@
         <div class="kind">이 카드에 담기는 포인트</div>
         <div>
           <span class="pill">점심식대</span>
-          <span class="pill soon">야근식대 · 추가 예정</span>
+          <span class="pill">야근식대</span>
+          <span class="pill">외부손님 식대</span>
           <span class="pill soon">복지포인트 · 추가 예정</span>
         </div>
       </div>
@@ -301,10 +377,19 @@
             <span class="ptable-note">음식점인데 결제가 실패하는 경우, 업종이 음식점으로 설정되지 않은 가맹점일 수 있습니다.<br>이 경우 휴온스 담당자에게 확인 부탁드립니다.</span></td>
           <td><span class="tag">10월부터 적용</span><br><span class="ptable-note">일 1만원 지급<br>지급 수단만 변경<br>식권대장 → 코나비즈</span></td>
         </tr>
-        <tr class="soon">
+        <tr>
           <td><b>야근식대</b></td>
-          <td>—</td>
-          <td><span class="tag soon">추가 예정</span></td>
+          <td>음식점에서만 사용 가능합니다.<br>
+            <span class="ptable-note">점심식대와 사용처 기준은 같습니다.</span></td>
+          <td><span class="tag">신청해서 받는 포인트</span><br>
+            <span class="ptable-note">미리 지급되지 않습니다.<br>야근한 날 앱에서 신청하면<br>그때 지급됩니다. (03 참고)</span></td>
+        </tr>
+        <tr>
+          <td><b>외부손님 식대</b></td>
+          <td>음식점에서만 사용 가능합니다.<br>
+            <span class="ptable-note">점심식대와 사용처 기준은 같습니다.</span></td>
+          <td><span class="tag">신청해서 받는 포인트</span><br>
+            <span class="ptable-note">외부 손님과 식사할 때<br>함께 식사하는 인원수를<br>선택해 신청합니다. (04 참고)</span></td>
         </tr>
         <tr class="soon">
           <td><b>복지포인트</b></td>
@@ -396,7 +481,7 @@
     <p class="sec-sub">실물카드는 물론 온라인·간편결제까지 됩니다.<br>카드사 선택 화면에서는 <b>KB카드</b>를 고르세요.</p>
 
     <div class="rail">
-      <div class="step"><div class="dot">6</div>
+      <div class="step"><div class="dot">1</div>
         <h3>간편결제 등록 (KB Pay / 삼성·카카오·네이버페이)</h3>
         <p>신용카드 가맹점 어디서든 결제되고, 간편결제 앱으로 온라인 결제도 됩니다.<br>등록·결제 시 카드사는 <b>KB카드</b>, 비밀번호는 앱 비밀번호 <b>앞 4자리</b>입니다.</p>
         <figure class="shot-frame">
@@ -409,7 +494,7 @@
         <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/KB-PAY-%EC%95%B1---%EC%BD%94%EB%82%98%EC%B9%B4%EB%93%9C-%EB%93%B1%EB%A1%9D-a2598574" target="_blank" rel="noopener">KB PAY 코나카드 등록 <span class="lk">↗</span></a>
       </div>
 
-      <div class="step"><div class="dot">7</div>
+      <div class="step"><div class="dot">2</div>
         <h3>QR / 바코드 결제</h3>
         <p>아래 직가맹점에서는 실물카드 없이 앱으로 바로 결제할 수 있습니다.</p>
         <p><span class="pill">GS25</span><span class="pill">세븐일레븐</span><span class="pill">이마트24</span><span class="pill">커피빈</span><span class="pill">부어치킨</span></p>
@@ -423,7 +508,7 @@
         <a class="docs-link" href="https://docs.channel.io/konabiz/ko/articles/%EB%AC%B4%EC%A0%9C%ED%95%9C-%ED%95%A0%EC%9D%B8-%ED%98%9C%ED%83%9D-50ba396b" target="_blank" rel="noopener">무제한 할인 혜택 안내 <span class="lk">↗</span></a>
       </div>
 
-      <div class="step"><div class="dot">8</div>
+      <div class="step"><div class="dot">3</div>
         <h3>사용내역 확인</h3>
         <p>카드명 <b>아래 금액</b>을 누르면 결제 내역, 카드명 <b>위 포인트</b>를 누르면 <b>포인트 종류별</b> 사용내역을 볼 수 있습니다.</p>
       </div>
@@ -437,10 +522,683 @@
   </div>
 </section>
 
+<!-- 3. MEAL REQUEST -->
+<section id="meal">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">03</span>
+      <h2 class="sec-title">야근식대 신청하기</h2></div>
+    <p class="sec-sub">야근하는 날 코나카드 앱에서 식대를 신청하고, 담당자가 승인하면 포인트가 지급됩니다.</p>
+
+    <div class="rail">
+      <div class="step"><div class="dot">1</div>
+        <h3>식대 신청 배너를 선택해주세요</h3>
+        <p>코나카드 앱 첫 화면을 아래로 내리면 식대 신청 배너가 있습니다.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-01-home.png" width="720" height="1600" alt="코나카드 앱 첫 화면의 식대 신청 배너" />
+            <span class="mk-box" style="left:4.2%;top:77%;width:91.6%;height:10.6%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">2</div>
+        <h3>현재 신청 가능한 식대를 선택해주세요</h3>
+        <p>신청 불가한 식대는 회색으로 보입니다.</p>
+        <p>신청 가능한 식대가 없다고 나오면 대상자가 아닙니다. 사내 인사팀에 문의해주세요.</p>
+        <div class="shots">
+          <figure class="shot-frame app">
+            <div class="mark-wrap">
+              <img class="shot" src="assets/app-02-select.png" width="720" height="1600" alt="신청할 식대 목록 화면" />
+              <span class="mk-box" style="left:4%;top:27.5%;width:92%;height:11.2%"></span>
+            </div>
+          </figure>
+          <figure class="shot-frame app">
+            <img class="shot" src="assets/app-03-none.png" width="720" height="1600" alt="신청 가능한 식대가 없는 화면" />
+          </figure>
+        </div>
+      </div>
+
+      <div class="step"><div class="dot">3</div>
+        <h3>내용을 확인하고 신청해주세요</h3>
+        <p>오늘 남은 신청 횟수와 지급될 금액이 표시됩니다. 금액은 회사 식대 정책으로 변경 불가합니다.</p>
+        <p>필요하시면 사유를 입력하시고 <b>[신청하기]</b> 버튼을 눌러주세요.</p>
+        <p class="muted">승인을 받아야 하는 경우에는 어느 부서가 승인하는지 화면에 함께 표시됩니다.<br>
+          사유에 주민등록번호 &middot; 연락처 같은 개인정보는 입력하지 말아주세요.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-04-request.png" width="720" height="1686" alt="임직원 식대 신청 화면" />
+            <span class="mk-box" style="left:4.4%;top:91.1%;width:91.2%;height:7.3%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">4</div>
+        <h3>신청 결과를 확인해주세요</h3>
+        <p><b>[내 신청 내역]</b> 영역을 위로 끌어올리면 신청한 내역을 확인할 수 있습니다.</p>
+        <p>신청하신 건마다 어떤 상태인지 오른쪽에 표시됩니다.</p>
+        <p><b>대기</b> &mdash; 관리자의 승인을 기다리는 상태입니다. 처리되기 전이면 <b>[신청취소]</b>로 취소하실 수 있습니다.<br>
+           <b>반려</b> &mdash; 관리자가 신청을 반려한 상태입니다. 반려된 사유를 확인해주세요.<br>
+           <b>승인</b> &mdash; 포인트가 지급된 상태입니다. 자정까지 사용하지 않으시면 자동으로 소멸됩니다.</p>
+        <p class="muted">여기에는 최근 3일 내역만 보입니다. 지난 내역은 <b>[카드포인트 이용 내역]</b>에서 확인해주세요.</p>
+        <div class="shots">
+          <figure class="shot-frame app">
+            <div class="mark-wrap">
+              <img class="shot" src="assets/app-02-select.png" width="720" height="1600" alt="식대 신청 화면 아래쪽의 내 신청 내역 영역" />
+              <span class="mk-box" style="left:1.5%;top:86.5%;width:97%;height:13%"></span>
+              <span class="mk-up" style="top:79%">&#8593;</span>
+            </div>
+          </figure>
+          <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-05-history.png" width="720" height="1556" alt="내 식대 신청 내역 화면" />
+            <span class="mk-box" style="left:80.6%;top:27.6%;width:15.6%;height:4.1%"></span>
+            <span class="mk-box" style="left:80.6%;top:38.7%;width:15.6%;height:4.1%"></span>
+            <span class="mk-box" style="left:80.6%;top:65.2%;width:15.6%;height:4.1%"></span>
+          </div>
+        </figure>
+        </div>
+      </div>
+
+      <div class="step"><div class="dot">5</div>
+        <h3>받으신 식대를 사용해주세요</h3>
+        <p>지급 받으신 야근식대는 <b>자정까지 사용하지 않으시면 소멸되어 사라집니다.</b></p>
+        <p>사용처와 사용 시간은 회사 인사담당자에게 확인해주세요!</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>💡 신청 금액 &middot; 신청하실 수 있는 요일과 시간 &middot; 하루 신청 횟수</b>
+      회사 내부 정책에 따라 정해집니다. 위 화면의 금액과 시간은 예시입니다.
+      실제 기준은 회사 담당자의 안내를 확인해주세요.
+    </div>
+  </div>
+</section>
+
+<!-- 4. GUEST MEAL -->
+<section id="guest">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">04</span>
+      <h2 class="sec-title">외부손님 식대 신청하기</h2></div>
+    <p class="sec-sub">외부 손님과 함께 식사하실 때 쓰는 식대입니다.<br>신청하는 방법은 야근식대와 같고, <b>신청 가능한 시간</b>과 <b>인원수를 고르는 것</b>이 다릅니다.</p>
+
+    <div class="rail">
+      <div class="step"><div class="dot">1</div>
+        <h3>외부손님 식대를 선택해주세요</h3>
+        <p>신청 시간이나 신청이 가능한 임직원은 회사 내부 정책에 따라 결정됩니다.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-02b-select-guest.png" width="720" height="1600" alt="외부손님 식대를 선택하는 화면" />
+            <span class="mk-box" style="left:4%;top:40.3%;width:92%;height:11.3%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">2</div>
+        <h3>함께 식사하시는 인원수를 선택하여 신청해주세요</h3>
+        <p>1인당 금액 &times; 인원수가 한 번에 지급됩니다.</p>
+        <p>필요하시면 사유를 입력하시고 <b>[신청하기]</b> 버튼을 눌러주세요.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-10-guest-request.png" width="720" height="1774" alt="외부손님 식대 신청 화면" />
+            <span class="mk-box" style="left:4.4%;top:26.6%;width:91.2%;height:4.6%"></span>
+            <span class="mk-box" style="left:4.7%;top:91.5%;width:90.4%;height:6.9%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">3</div>
+        <h3>승인되면 포인트가 지급됩니다</h3>
+        <p>지급 받으신 외부손님 식대도 <b>자정까지 사용하지 않으시면 소멸되어 사라집니다.</b><br>사용처와 사용 시간은 회사 인사담당자에게 확인해주세요!</p>
+        <p class="muted">신청 결과는 <b>[내 신청 내역]</b>에서 확인해주세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. APPROVAL -->
+<section id="approve">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">05</span>
+      <h2 class="sec-title">임직원 식대 승인하기</h2></div>
+    <p class="sec-sub">승인 담당자로 지정되신 분만 해당합니다.<br>식대 신청 화면 맨 위에 <b>승인을 기다리는 신청</b>이 보이면 승인 담당자입니다.</p>
+
+
+    <div class="rail">
+      <div class="step"><div class="dot">1</div>
+        <h3>승인을 기다리는 신청을 눌러주세요</h3>
+        <p>식대 신청 화면 맨 위에 <b>승인을 기다리는 신청</b>이 몇 건인지 표시됩니다. 눌러서 승인 화면으로 들어갑니다.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-09-approver-entry.png" width="720" height="1600" alt="승인을 기다리는 신청 건수가 보이는 화면" />
+            <span class="mk-box" style="left:4.4%;top:9.4%;width:91.2%;height:8.1%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">2</div>
+        <h3>다른 식대를 보시려면 상품을 바꿔주세요</h3>
+        <p>승인 화면은 <b>식대 한 종류씩</b> 보여줍니다. 처음에는 식대 포인트 신청 건이 나옵니다.</p>
+        <p><b>외부손님 식대</b>처럼 다른 식대의 신청 건을 보시려면, 카드 이름 아래의 <b>상품 이름</b>을 눌러 바꿔주세요.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-06-approve-list.png" width="742" height="2312" alt="상품 이름을 누르는 위치" />
+            <span class="mk-box" style="left:28.5%;top:19.1%;width:43.2%;height:2.5%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">3</div>
+        <h3>대기 중인 신청을 확인해주세요</h3>
+        <p><b>[대기]</b> 탭에서 아직 처리되지 않은 신청을 보실 수 있습니다. 신청자 &middot; 부서 &middot; 시간 &middot; 금액 &middot; 사유가 표시됩니다.</p>
+        <p>처리하는 방법은 두 가지입니다.</p>
+        <p><b>목록에서 바로 처리</b> &mdash; <b>[전체선택]</b>으로 모두 고르거나 필요한 건만 골라 아래 <b>[승인]</b> &middot; <b>[반려]</b>를 누릅니다. <b>[전체 승인]</b>으로 한 번에 승인할 수도 있습니다.<br>
+           <b>상세를 보고 처리</b> &mdash; 오른쪽 화살표 영역을 누르면 상세 내용을 확인한 뒤 승인 &middot; 반려하실 수 있습니다.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-06-approve-list.png" width="742" height="2312" alt="식대 승인 대기 목록" />
+            <span class="mk-box" style="left:4.7%;top:28.4%;width:90.4%;height:4.8%"></span>
+            <span class="mk-box" style="left:5.4%;top:43.2%;width:36.4%;height:2.3%"></span>
+            <span class="mk-box" style="left:89.6%;top:49.1%;width:9.4%;height:2.2%"></span>
+            <span class="mk-box" style="left:4.7%;top:93.3%;width:90.4%;height:5.4%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">4</div>
+        <h3>한 건씩 보시고 처리해주세요</h3>
+        <p>신청 건을 누르면 상세 내용이 보입니다. 확인하신 뒤 <b>[승인]</b> 또는 <b>[반려]</b>를 눌러주세요.</p>
+        <p class="muted">승인 담당자가 여러 명이면 <b>먼저 처리한 분의 결정</b>이 최종 결과가 됩니다.<br>
+          자정까지 아무도 처리하지 않으면 <b>승인 시간 만료</b> 사유로 자동 반려됩니다.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-07-approve-detail.png" width="720" height="1600" alt="식대 승인 처리 화면" />
+            <span class="mk-box" style="left:4.7%;top:90.6%;width:90.4%;height:7.7%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">5</div>
+        <h3>반려하실 때는 사유를 적어주세요</h3>
+        <p><b>[반려]</b>를 누르면 사유를 적는 화면이 나옵니다. 사유를 적고 <b>[반려하기]</b>를 눌러주세요.</p>
+        <p class="muted">여러 건을 한 번에 반려하시면 고른 건 모두 같은 사유로 반려됩니다.<br>
+          사유에 이름 &middot; 연락처 같은 개인정보는 적지 말아주세요.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-12-reject-reason.png" width="720" height="1600" alt="반려 사유를 입력하는 화면" />
+            <span class="mk-box" style="left:4.4%;top:38.8%;width:91.2%;height:14.0%"></span>
+            <span class="mk-box" style="left:38.5%;top:59.5%;width:56.5%;height:7.3%"></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="step"><div class="dot">6</div>
+        <h3>처리하신 내역을 확인해주세요</h3>
+        <p><b>[완료]</b> 탭에서 승인 &middot; 반려된 내역과 누가 처리했는지 확인하실 수 있습니다.</p>
+        <figure class="shot-frame app">
+          <div class="mark-wrap">
+            <img class="shot" src="assets/app-08-approve-done.png" width="736" height="1634" alt="식대 승인 완료 내역" />
+            <span class="mk-box" style="left:63.3%;top:11.7%;width:17.7%;height:4.6%"></span>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>💡 신청했는데 포인트가 안 들어왔다면</b>
+      승인을 기다리는 중이거나, 반려 또는 지급 실패인 경우입니다. 앱 내역에서 사유를 확인하실 수 있습니다.
+      반려 &middot; 실패한 신청은 그날 받으실 수 있는 횟수에 포함되지 않으므로 다시 신청하실 수 있습니다.
+    </div>
+  </div>
+</section>
+
+<!-- 6. PLACES -->
+<section id="places">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">06</span>
+      <h2 class="sec-title">사용처</h2></div>
+    <p class="sec-sub">복지포인트로 결제되는 가게입니다.<br>
+      <b>판교 사옥 일대와 과천</b>의 음식점 &middot; 카페 &middot; 편의점에서 사용하실 수 있습니다.<br>지도는 <span style="color:#C23A2B;font-weight:700">● 휴온스글로벌 사옥</span>을 중심으로 보여드립니다.</p>
+
+    <div class="pl-tools">
+      <input id="pl-q" class="pl-search" type="search" placeholder="가게 이름이나 주소로 찾기" />
+      <button class="pl-chip" data-area="all" aria-pressed="true">전체</button>
+      <button class="pl-chip" data-area="pangyo" aria-pressed="false">판교</button>
+      <button class="pl-chip" data-area="gwacheon" aria-pressed="false">과천</button>
+      <button class="pl-chip pl-here" id="pl-here" type="button">📍 현재 위치</button>
+    </div>
+    <div class="pl-tools">
+      <button class="pl-chip" data-cat="all" aria-pressed="true">모든 업종</button>
+      <button class="pl-chip" data-cat="meal" aria-pressed="false">식사</button>
+      <button class="pl-chip" data-cat="cafe" aria-pressed="false">카페 &middot; 디저트</button>
+      <button class="pl-chip" data-cat="cvs" aria-pressed="false">편의점</button>
+    </div>
+
+    <div id="pl-map"></div>
+    <div class="pl-bar">
+      <p class="pl-count" id="pl-count"></p>
+      <label class="pl-view"><input type="checkbox" id="pl-viewport" checked />
+        지도에 보이는 곳만</label>
+    </div>
+    <div class="pl-list" id="pl-list"></div>
+
+    <div class="pl-print">
+    <h3 class="pl-ph">사용처 전체 목록</h3>
+    <h4 class="pl-pa">판교 사옥 일대 <span>162곳</span></h4>
+    <p class="pl-pc">식사 <span>83곳</span></p>
+    <ul class="pl-pl">
+    <li><b>거궁찬 판교점</b><span>창업로 17 B동 1층 104호 (시흥동)</span></li>
+    <li><b>거반상 판교점</b><span>창업로 17 A동 1층 106-3호 (시흥동)</span></li>
+    <li><b>고메화담</b><span>창업로 43 1층 108호 (시흥동,업무동)</span></li>
+    <li><b>곰작골나주곰탕 판교점</b><span>창업로 54 상가 B동 103호 (시흥동,판교제2테크노밸리기업성장센터)</span></li>
+    <li><b>금토한우</b><span>달래내로 14 지하1층 (금토동)</span></li>
+    <li><b>다락솥 판교 파미어스몰점</b><span>창업로 18 208호 (시흥동)</span></li>
+    <li><b>담소소사골순대육개장 판교4호점</b><span>창업로 17 D동2층 207-3호 (시흥동)</span></li>
+    <li><b>더몰트하우스서핑시티</b><span>창업로 18 1층 107-2호 (시흥동)</span></li>
+    <li><b>더진국 판교파미어스몰점</b><span>창업로 18 2층 202-2호, 202-3호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>델리기업지원허브점</b><span>대왕판교로 815 5층 501호.503호 (시흥동,판교창조경제밸리)</span></li>
+    <li><b>델리커리 판교파미어스몰점</b><span>창업로 18 P1동 2층 210-1호 (시흥동)</span></li>
+    <li><b>도월</b><span>달래내로28번길 6 지하1층, 1층. (금토동)</span></li>
+    <li><b>돈우모리</b><span>창업로 42 지하1층 B120호 (시흥동)</span></li>
+    <li><b>돗가비 불 쭈꾸미</b><span>창업로 43 A동 1층 3호 (시흥동)</span></li>
+    <li><b>동해강릉초당 짬뽕순두부 판교파미어스몰점</b><span>창업로 17 E동 206-2호 (시흥동)</span></li>
+    <li><b>런치포유</b><span>창업로 43 B-110, B-111,B-112호 (시흥동,글로벌비즈센터)</span></li>
+    <li><b>(주)마스터다이닝 해담가</b><span>창업로 17 A동 1층 107호 (시흥동)</span></li>
+    <li><b>모모유부 판교파미어스몰</b><span>창업로 17 지하1층 비104-1호 (시흥동,파미어스몰)</span></li>
+    <li><b>밀본 파미어스몰점</b><span>창업로 17 B동 2층 201-1호 (시흥동)</span></li>
+    <li><b>백경 한우 판교본점</b><span>창업로 42 지하1층 B117호 (시흥동)</span></li>
+    <li><b>백소정 판교제2테크노밸리점</b><span>창업로 43 1층 .A-105호 (시흥동)</span></li>
+    <li><b>본도시락 판교 파미어스점</b><span>창업로 17 E동 지하1층 B105-2호 (시흥동)</span></li>
+    <li><b>북창동순두부 판교파미어스몰점</b><span>창업로 18 2층 209호 (시흥동)</span></li>
+    <li><b>블리스버거 판교2밸리점</b><span>창업로 42 지하1층 B116호 (시흥동)</span></li>
+    <li><b>빅딜(vicdeal)</b><span>창업로 43 1층 41호 (시흥동,글로벌비즈센터 업무동)</span></li>
+    <li><b>빤닭빤닭 판교점</b><span>창업로 18 판교제2테크노밸리 C1동 1층 117호 (시흥동)</span></li>
+    <li><b>삼청동샤브(판교아이스퀘어점)</b><span>창업로 18 판교제2테크노밸리C1동2층210-2호 (시흥동)</span></li>
+    <li><b>송원식당</b><span>창업로40번길 6 G동 2층 12호 (시흥동,판교 제2테크노밸리 LH 1단지)</span></li>
+    <li><b>스텝밀</b><span>창업로 43 1층 B-105, B-106호 (시흥동)</span></li>
+    <li><b>시먼당 파미어스몰</b><span>창업로 18 2층 201-3호 (시흥동)</span></li>
+    <li><b>신황산벌</b><span>달래내로 40 지층 (금토동)</span></li>
+    <li><b>(주)심플프로젝트컴퍼니</b><span>창업로 17 판교아이스퀘어D동 지층B106-1호 (시흥동)</span></li>
+    <li><b>아비꼬 판교파미어스몰점</b><span>창업로 17 B동2층201-3호 (시흥동)</span></li>
+    <li><b>어머니밥상</b><span>대왕판교로 824 1층 남측 (시흥동)</span></li>
+    <li><b>언버튼</b><span>창업로 43 A동 107호 언버튼 (시흥동,판교글로벌비즈센터)</span></li>
+    <li><b>(주)에스앤에스컴퍼니 판교파미어스몰 서가앤</b><span>창업로 17 A동 1층 106-1호 (시흥동)</span></li>
+    <li><b>(주)에코팜유업(EcoFarm Dairy)</b><span>달래내로27번길 3 1층 (금토동)</span></li>
+    <li><b>오백국수 판교LH테크노점</b><span>창업로40번길 6 G동 2층 7호 (시흥동,판교 제2테크노밸리 LH 1단지)</span></li>
+    <li><b>오지(OG)버거 판교1호점</b><span>창업로 17 B동 1층 102-1호 (시흥동)</span></li>
+    <li><b>오투닭갈비&amp;부대찌개 판교아이스퀘어점</b><span>창업로 17 F동 201호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>오한수우육면가 판교파미어스몰점</b><span>창업로 17 A동 2층 203-1호 (시흥동)</span></li>
+    <li><b>온담</b><span>창업로 17 B동 201-4호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>우동키노야 판교파미어스몰점</b><span>창업로 17 D동 2층 207-2호 (시흥동)</span></li>
+    <li><b>우스블랑 판교파미어스몰점</b><span>창업로 18 1층 107-1호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>(주)울림푸드한식뷔페 판교아이스퀘어점</b><span>창업로 17 F동 지하1층 B104호-B107호 (시흥동)</span></li>
+    <li><b>이태리부대찌개 제2판교점</b><span>창업로 42 지하1층 B113호 (시흥동)</span></li>
+    <li><b>전라도 한식밥상</b><span>달래내로28번길 10 지하1층 B03호 (금토동,럭스빌)</span></li>
+    <li><b>전주한식뷔페</b><span>달래내로 40 1층 (금토동)</span></li>
+    <li><b>정원식당</b><span>시흥동 280-4번지 B107호</span></li>
+    <li><b>제이브이엘(JVL)부대찌개 판교아이스퀘어점</b><span>창업로 17 2층 206-3호 (시흥동)</span></li>
+    <li><b>짬뽕지존 판교점</b><span>대왕판교로 830 1층 (시흥동)</span></li>
+    <li><b>창업의신에프앤비 주식회사</b><span>대왕판교로 815 1층 106호 (시흥동,판교창조경제밸리)</span></li>
+    <li><b>천애부프리미엄 판교파미어스몰점</b><span>창업로 18 2층 207호 (시흥동)</span></li>
+    <li><b>청계산 담백미</b><span>달래내로 22 1층 (금토동)</span></li>
+    <li><b>청계산담백미 가든</b><span>달래내로28번길 8 1층 (금토동)</span></li>
+    <li><b>청담식당</b><span>대왕판교로 842 1층 201호 (시흥동,MHY)</span></li>
+    <li><b>청록미나리식당 판교점</b><span>창업로 17 C동 1층 110-2호 (시흥동)</span></li>
+    <li><b>(주)카츄마마 파미어스몰점</b><span>창업로 17 아이스퀘어 D동 지상2층 207-1호 (시흥동)</span></li>
+    <li><b>탄탄면공방 판교아이스퀘어점</b><span>창업로 17 F동 212호 (시흥동)</span></li>
+    <li><b>토끼정</b><span>창업로 17 A동 1층 106-2호, 106-3호 (시흥동)</span></li>
+    <li><b>(주)파티나라하이비스(판교점)</b><span>창업로 18 3층 (시흥동)</span></li>
+    <li><b>파파보틀</b><span>창업로 17 f동 지하1층 b101호 (시흥동)</span></li>
+    <li><b>파파존스 판교2테크노밸리점</b><span>창업로 17 F동지1층B102호 (시흥동)</span></li>
+    <li><b>판교 즉석떡복이&amp;주먹밥</b><span>창업로 42 지하1층 B110호 (시흥동,판교 제2테크노밸리 경기 기업성장센터)</span></li>
+    <li><b>판교감자탕보쌈</b><span>창업로 42 지하1층 B114호 (시흥동,판교제2테크노밸리경기기업성장센터)</span></li>
+    <li><b>판교옥</b><span>창업로 57 1층 106호 107호 (시흥동)</span></li>
+    <li><b>판교제일순대국</b><span>창업로 43 B동 108호 (시흥동,음식점업)</span></li>
+    <li><b>퍼틴 베트남쌀국수</b><span>창업로 17 2층 201-5 (시흥동)</span></li>
+    <li><b>푸주옥설렁탕집</b><span>시흥동 223 1층</span></li>
+    <li><b>풀무원푸드앤컬처 키친42풀무원</b><span>창업로40번길 20 지하1층 (시흥동,SW드림센터)</span></li>
+    <li><b>풍경한식뷔페</b><span>창업로 42 1층 114호,115호,116호 (시흥동,판교 제2테크노밸리 경기 기업성장센터)</span></li>
+    <li><b>(주)피피</b><span>창업로 18 O1동 1층 112호 (시흥동)</span></li>
+    <li><b>하루엔소쿠 판교점</b><span>창업로 42 1층 121호 (시흥동)</span></li>
+    <li><b>해루(어)</b><span>창업로 43 1층. B-101호 (시흥동)</span></li>
+    <li><b>홍루원</b><span>대왕판교로 812 시흥동,지하1층</span></li>
+    <li><b>홍짜장 판교파미어스점</b><span>창업로 17 F동 2층 202호 (시흥동)</span></li>
+    <li><b>화란(판교파미어스몰점)</b><span>창업로 17 C동 2층 208-1,208-2,208-3호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>주식회사 화화돈판교파미어스</b><span>창업로 18 피1 2층 202-1호 (시흥동)</span></li>
+    <li><b>훅트포케판교제2테크노밸리점</b><span>창업로 43 1층. A-108호 (시흥동)</span></li>
+    <li><b>히노아지 판교파미어스몰점</b><span>창업로 17 B동 201-2호 (시흥동)</span></li>
+    <li><b>힘난다버거 판교티시(TC)점</b><span>대왕판교로 815 상가동 107호 (시흥동,판교창조경제밸리)</span></li>
+    <li><b>101번지 남산돈까스 판교파미어스몰점</b><span>창업로 17 C동 지하1층 B109-2호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>1992덮밥and짜글이 판교파미어스몰점</b><span>창업로 17 A동2층 203-2호 (시흥동)</span></li>
+    </ul>
+    <p class="pl-pc">카페 · 디저트 <span>50곳</span></p>
+    <ul class="pl-pl">
+    <li><b>감성커피 판교아이스퀘어점</b><span>창업로 17 제에프동 지상1층 105호 (시흥동)</span></li>
+    <li><b>감포회플러스</b><span>대왕판교로 850 1층 1호 (시흥동)</span></li>
+    <li><b>그라츠커피랩 판교파미어스몰점</b><span>창업로 18 119호 (시흥동)</span></li>
+    <li><b>누하스 플레이(카페)</b><span>창업로 18 C1동 2층 204-3(일부)호 (시흥동)</span></li>
+    <li><b>단무지</b><span>창업로40번길 30 지하2층 B210호 (시흥동)</span></li>
+    <li><b>뚜레쥬르 판교파미어스몰점</b><span>창업로 17 B동 103-2호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>라라스페이스</b><span>창업로 42 1층 118호 (시흥동,판교제2테크노밸리 경기기업성장센터)</span></li>
+    <li><b>롯데시네마 판교_티켓 외</b><span>달래내로 29 판교 (금토동,롯데시네마)</span></li>
+    <li><b>롯데웰푸드(주)(푸) 파스퇴르밀크바 파미어스</b><span>창업로 18 CI동 2층 211호 (시흥동)</span></li>
+    <li><b>린지커피</b><span>창업로 43 1층 A-102 (시흥동)</span></li>
+    <li><b>마당(MAADANG) 290</b><span>창업로 17 F동 3층 303-1호 (시흥동)</span></li>
+    <li><b>매머드커피 익스프레스 판교제2테크노밸리점</b><span>창업로 54 지하1층 B105호 (시흥동)</span></li>
+    <li><b>메가MGC커피 제2테크노밸리점</b><span>창업로 43 A동 104호 (시흥동)</span></li>
+    <li><b>메가엠지씨커피 판교파미어스몰점</b><span>창업로 18 2층 204-1호 (시흥동)</span></li>
+    <li><b>멜티코</b><span>창업로 17 F동 103호 (시흥동)</span></li>
+    <li><b>바디쉐프</b><span>창업로 17 B동3층301-3호 (시흥동,판교아이스퀘어)</span></li>
+    <li><b>바캉스</b><span>창업로40번길 6 근린생활시설동 지2층 2호 (시흥동,판교 제2테크노밸리 LH 1단지)</span></li>
+    <li><b>(주)버터풀앤크리멀러스</b><span>창업로 18 1층 (시흥동)</span></li>
+    <li><b>빙프레소요거트베이커리 판교파미어스몰점</b><span>창업로 18 지하1층 일부호 (시흥동)</span></li>
+    <li><b>샐러디 판교제2테크노밸리점</b><span>창업로 57 1층 103호 (시흥동)</span></li>
+    <li><b>샐러딧 판교파미어스점</b><span>창업로 17 판교아이스퀘어 E동 지하1층 B108호 (시흥동)</span></li>
+    <li><b>시나본 판교파미어스점</b><span>창업로 17 B동 지하1층 B103-1호 (시흥동)</span></li>
+    <li><b>쓰리도어즈커피(3doorscoffee)</b><span>창업로 43 B동 1층 107호 (시흥동)</span></li>
+    <li><b>에스이커피 기업성장센터점</b><span>창업로 42 1층 107, 108, 109호 (시흥동)</span></li>
+    <li><b>와플샵</b><span>창업로 18 211호 (시흥동,판교아이스퀘어 c1블록 지상 2층)</span></li>
+    <li><b>요거트담은빙수 빙프레소 판교파미어스몰점</b><span>창업로 18 B1층 롯데시네마 판교 (시흥동)</span></li>
+    <li><b>원유로스페셜티 판교 제2테크노밸리점</b><span>창업로 17 C2동 지1층 B104-2호 (시흥동)</span></li>
+    <li><b>이디야커피 판교파미어스몰점</b><span>창업로 17 C2블록 B1층 B103-2호 (시흥동)</span></li>
+    <li><b>이에스에프피(ESFP)</b><span>창업로 43 A동 1층 101호 (시흥동)</span></li>
+    <li><b>종로북앤베이커리 판교점</b><span>창업로 17 B동 B1층 (시흥동)</span></li>
+    <li><b>주니아판교IT센터점</b><span>창업로40번길 30 판교IT센터 B208호,B209호 (시흥동)</span></li>
+    <li><b>지구마을사회적협동조합</b><span>대왕판교로 825 본관 1층 (시흥동)</span></li>
+    <li><b>카페57에비뉴</b><span>창업로 57 1층 102호 (시흥동)</span></li>
+    <li><b>카페리빈</b><span>창업로 42 1층 122호 (시흥동)</span></li>
+    <li><b>커스텀커피 판교테크노밸리점</b><span>창업로40번길 6 근린생활시설동 지하2층 3호 (시흥동,판교 제2테크노밸리 LH 1단지)</span></li>
+    <li><b>커피나인 판교제2테크노밸리</b><span>창업로 55 1층 106호 (시흥동)</span></li>
+    <li><b>컴포즈커피 판교제2테크노밸리점</b><span>창업로 55 1층 104호 (시흥동)</span></li>
+    <li><b>컴포즈커피 판교파미어스몰점</b><span>창업로 17 C2블록 1층 102-2 (시흥동)</span></li>
+    <li><b>콜드앤브런치</b><span>대왕판교로 801 110호 (시흥동,기업지원허브)</span></li>
+    <li><b>콩가커피</b><span>대왕판교로816번길 41 지층 (시흥동)</span></li>
+    <li><b>퀀트커피</b><span>창업로40번길 6 근린생활시설동 지하2층 4호 (시흥동,판교 제2테크노밸리 LH 1단지)</span></li>
+    <li><b>탐앤탐스 세종연구소 입구점</b><span>대왕판교로 850 1층 102호 (시흥동)</span></li>
+    <li><b>텐퍼센트 제2차판교테크노벨리점</b><span>창업로 55 1층 103호 (시흥동)</span></li>
+    <li><b>투썸플레이스 판교파미어스몰점</b><span>창업로 17 B동 1층 101호 (시흥동)</span></li>
+    <li><b>프레소 커피 랩(PRESO COFFEE LAB)</b><span>창업로 42 지1층 B103호 판교 제2테크노밸리 경기 (시흥동,기업성장센터)</span></li>
+    <li><b>피크니크</b><span>창업로 18 C1동 1층 피크니크 111호 (시흥동)</span></li>
+    <li><b>피크니크 주식회사</b><span>창업로 18 1층 111호 (시흥동)</span></li>
+    <li><b>피키샐리</b><span>창업로 17 A동 지층 B104-3호 (시흥동)</span></li>
+    <li><b>하와이킴</b><span>창업로 18 2층 203호 (시흥동)</span></li>
+    <li><b>Hola C&#x27;est bon</b><span>창업로 17 C2동 2층 202-2호 (시흥동)</span></li>
+    </ul>
+    <p class="pl-pc">편의점 <span>29곳</span></p>
+    <ul class="pl-pl">
+    <li><b>성남글로벌융합센터점</b><span>경기도 성남시 수정구 달래내로 46</span></li>
+    <li><b>성남대왕판교TG점</b><span>달래내로 40</span></li>
+    <li><b>세븐일레븐 판교LH테크노점</b><span>창업로40번길 6 판교 제2테크노밸리 A1블록 단지내상가 B205호 (시흥동,판교 제2테크노밸리 LH 1단지)</span></li>
+    <li><b>세븐일레븐 판교기업센터점</b><span>창업로 54 판교 제2테크노밸리 판교기업성장센터 B106호 (시흥동)</span></li>
+    <li><b>씨유(CU) 성남대왕판교TG점</b><span>달래내로 40 상가. 지1층 우측 3칸 (금토동)</span></li>
+    <li><b>씨유(CU)판교글로벌비즈센터점</b><span>창업로 43 A동 106호 (시흥동)</span></li>
+    <li><b>씨유(CU)한국국제협력단점</b><span>대왕판교로 825 1층 구내편의점 (시흥동)</span></li>
+    <li><b>이마트24 성남글로벌융합센터점 (한우리)</b><span>달래내로 46 2층 207호 (시흥동)</span></li>
+    <li><b>이마트24 판교디앤써밋점</b><span>창업로 55 상가동 101호, 102호 후면일부 (시흥동)</span></li>
+    <li><b>㈜이마트24_R대왕판교로점</b><span>경기도 성남시 수정구 대왕판교로 812 .</span></li>
+    <li><b>이마트24판교IT센터점</b><span>창업로40번길 30 지하2층206호,207호 (시흥동)</span></li>
+    <li><b>지에스(GS)25 파미어스1점</b><span>창업로 18 107-3호 (시흥동,파미어스몰P1)</span></li>
+    <li><b>지에스(GS)25 파미어스1점(무인자판기)</b><span>창업로 18 107-3호 (시흥동)</span></li>
+    <li><b>지에스(GS25)파미어스2점</b><span>창업로 17 105호 (시흥동)</span></li>
+    <li><b>지에스25 판교지식센터점</b><span>창업로 42 지하1층 B111호 (시흥동)</span></li>
+    <li><b>지에스25 판교테크노밸리점</b><span>대왕판교로 815 109호 (시흥동,판교창조경제밸리)</span></li>
+    <li><b>㈜코리아세븐_판교기업센터점</b><span>경기도 성남시 수정구 창업로 54 판교제2테크노밸리기업성장센터(시흥동) .</span></li>
+    <li><b>판교IT센터점</b><span>경기도 성남시 수정구 창업로40번길 30</span></li>
+    <li><b>판교디앤써밋점</b><span>경기도 성남시 수정구 창업로 55</span></li>
+    <li><b>편의점</b><span>경기도 성남시 수정구 달래내로 27 B1층 .</span></li>
+    <li><b>편의점</b><span>경기도 성남시 수정구 대왕판교로 889, (시흥동) .</span></li>
+    <li><b>한국국제협력단점</b><span>경기도 성남시 수정구 대왕판교로 825 한국국제협력단</span></li>
+    <li><b>GS25 대왕판교점</b><span>달래내로 40 (금토동 270-9)</span></li>
+    <li><b>GS25 파미어스1점</b><span>창업로 18, 파미어스몰 P1. 107-3호 (시흥동 296-3)</span></li>
+    <li><b>GS25 파미어스2점</b><span>창업로 17, 105호 (시흥동 288-2)</span></li>
+    <li><b>GS25 판교지식센터점</b><span>창업로 42, B111호 (시흥동 293)</span></li>
+    <li><b>GS25 판교테크노밸리점</b><span>대왕판교로 815, 상가 109호 (시흥동 285-2, 기업지원허브)</span></li>
+    <li><b>K7 판교LH테크노점</b><span>창업로40번길 6 판교제2테크노밸리 A1블록 단지내상가 B205호</span></li>
+    <li><b>K7 판교아이스퀘어점</b><span>창업로 17 (시흥동) F동 B102호</span></li>
+    </ul>
+    <h4 class="pl-pa">과천 동암연구소 일대 <span>217곳</span></h4>
+    <p class="pl-pc">식사 <span>121곳</span></p>
+    <ul class="pl-pl">
+    <li><b>가마솥 순대국밥 과천지식정보타운점</b><span>과천대로7길 20 제1층 123,124호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>가마솥회관</b><span>과천대로 161 (갈현동)</span></li>
+    <li><b>강남밥상앤맥주광장</b><span>과천대로7나길 37 2층 201호 디엠 (갈현동,디 엠(The M))</span></li>
+    <li><b>갤러리 카페 봄</b><span>가일로 15-3 1층 (갈현동)</span></li>
+    <li><b>겸상</b><span>과천대로7길 20 B동 1층 158호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>경이로운 금돈</b><span>과천대로7길 46 109호 (갈현동,과천CreationTower)</span></li>
+    <li><b>(주)고메드갤러리아 KOTITI시험연구원 사내진</b><span>과천대로7나길 48 지하1층 (갈현동)</span></li>
+    <li><b>고불짬뽕</b><span>과천대로7나길 60 (지1층 5호) (갈현동,과천어반허브)</span></li>
+    <li><b>고옴탱</b><span>과천대로7나길 60 B1층 002호 (갈현동)</span></li>
+    <li><b>과천뚝빵집</b><span>과천대로7길 20 B동 1층 143호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>과천화이루</b><span>과천대로7길 33 A동 1층 116호 (갈현동,디 테크 타워과천)</span></li>
+    <li><b>굿푸드</b><span>과천대로7길 65 지하층 B002호, B003호, B004호, B005호, B006호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>금문원</b><span>과천대로7나길 9 DX타워 201,202호 (갈현동)</span></li>
+    <li><b>깡우동과천지식정보타운점</b><span>과천대로7길 20 B동 1층 155호 (갈현동,과천스마트케이업무시설)</span></li>
+    <li><b>꾸아과천디테크점</b><span>과천대로7길 33 A동 1층 105호 (갈현동,디 테크 타워 과천)</span></li>
+    <li><b>나주면옥</b><span>찬우물로 21-4 1층 (갈현동)</span></li>
+    <li><b>남해물고기이음</b><span>과천대로7길 20 1층 166, 167호 (갈현동,과천스마트케이 업무시설)</span></li>
+    <li><b>노렌인</b><span>과천대로7길 20 A동 225호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>주식회사 놀멍쉬멍</b><span>과천대로7나길 34 A-202호,A-203호 가비아앳 (갈현동)</span></li>
+    <li><b>농장식구들</b><span>찬우물로 22-13 1층,2층 (갈현동)</span></li>
+    <li><b>뉴욕버거 과천지식정보타운점</b><span>과천대로7나길 48 1층 1F-2호 (갈현동)</span></li>
+    <li><b>달스톤</b><span>과천대로7길 20 A동 128호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>(주)더드림 과천지점</b><span>갈현동 394-3번지</span></li>
+    <li><b>(주)더마더</b><span>찬우물로 28 (갈현동)</span></li>
+    <li><b>더블타코(Double Taco)</b><span>과천대로7길 33 B동 1층 113호 (갈현동,상가)</span></li>
+    <li><b>동남집 과천지식정보타운점</b><span>과천대로7나길 37 1층 101호 (갈현동,디 엠(The M))</span></li>
+    <li><b>두손푸드</b><span>가일로 49 1,2층 (갈현동)</span></li>
+    <li><b>등촌샤브칼국수 과천지식정보타운점</b><span>과천대로7나길 37 1층 103호 (갈현동,디 엠(The M))</span></li>
+    <li><b>디안포</b><span>과천대로7길 65 B동 117호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>디테크 한식뷔페</b><span>과천대로7길 33 B동 B119호 (갈현동,디테크타워과천)</span></li>
+    <li><b>딥인버터</b><span>과천대로7길 33 A동 113호 (갈현동,디테크타워과천)</span></li>
+    <li><b>똑반</b><span>가일1로 10 1층 (갈현동)</span></li>
+    <li><b>런치타임</b><span>과천대로7나길 60 B1층008호 (갈현동)</span></li>
+    <li><b>루스터 버거앤치킨 과천스마트케이점</b><span>과천대로7길 20 131호, 133호 (갈현동)</span></li>
+    <li><b>류창희국수과천스마트K점</b><span>과천대로7길 20 지1층 B134호 (갈현동)</span></li>
+    <li><b>(주)리슈위드(오레노카츠과천정보타운점)</b><span>과천대로7가길 20 1층101호일부 (갈현동,프리즘스퀘어1)</span></li>
+    <li><b>마라공방 과천점</b><span>과천대로7길 20 156,157호 과천 스마트케이 업무시설 (갈현동)</span></li>
+    <li><b>만보성</b><span>과천대로 155 1층 (갈현동)</span></li>
+    <li><b>만춘</b><span>과천대로7길 26 B동 1층 160,162,163호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>맛슐랭</b><span>과천대로7길 33 B동 1층 116호 (갈현동,디테크타워과천)</span></li>
+    <li><b>못난이대구탕</b><span>과천대로7길 20 과천 스마트케이 업무시설 B동 1층 138호 (갈현동)</span></li>
+    <li><b>무래무거</b><span>김영철길 19 (갈현동)</span></li>
+    <li><b>주식회사 미니말레</b><span>과천대로7길 65 B동 201호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>미분당 과천점</b><span>과천대로7나길 60 A동 111호 (갈현동,과천어반허브)</span></li>
+    <li><b>바른식탁 어반</b><span>과천대로7나길 60 B1층008호(과천어반허즈) (갈현동)</span></li>
+    <li><b>반올림피자 과천점</b><span>과천대로7마길 34 101호 (갈현동)</span></li>
+    <li><b>반포식스 과천지식정보타운점</b><span>과천대로7가길 20 103호 일부 (갈현동,프리즘스퀘어1)</span></li>
+    <li><b>방일해장국과천지식정보타운점</b><span>과천대로7길 20 A동 1층 107호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>배시시홈</b><span>과천대로7마길 19 101호 (갈현동)</span></li>
+    <li><b>보리촌곤드레</b><span>삼현로 53-107 1층 (갈현동)</span></li>
+    <li><b>복만당 과천지식정보타운점</b><span>과천대로7나길 20 101호 (갈현동,젠하우스)</span></li>
+    <li><b>본도시락 과천지식정보타운점</b><span>과천대로7길 20 과천 스마트케이 업무시설 제지1층 제비108호 (갈현동)</span></li>
+    <li><b>본죽and비빔밥 과천정보타운점</b><span>과천대로7길 46 101호 (갈현동,과천CreationTower)</span></li>
+    <li><b>봉평메밀막국수</b><span>과천대로 163 (갈현동)</span></li>
+    <li><b>산고을추어탕</b><span>찬우물로 24-11 1층 (갈현동)</span></li>
+    <li><b>삼등집</b><span>과천대로7길 20 A동 129, 130호 (갈현동)</span></li>
+    <li><b>삼성웰스토리(주)JW과천</b><span>과천대로7길 38 11층 JW 이노스퀘어 (갈현동)</span></li>
+    <li><b>삼성웰스토리(주)광동제약</b><span>과천대로7다길 52 광동과천타워 지하1층.(1층) (갈현동)</span></li>
+    <li><b>삼성웰스토리(주)메가존산학연센터</b><span>과천대로7길 74 지하1층 (갈현동)</span></li>
+    <li><b>삼청당 과천스마트K점</b><span>과천대로7길 20 지하1층 137호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>상월</b><span>과천대로7길 26 B동 지층 비153호 (갈현동)</span></li>
+    <li><b>샤브올데이 과천주차타워점</b><span>과천대로5길 6 2층 (갈현동,과천아이플렉스)</span></li>
+    <li><b>서울정 양평해장</b><span>가일로 15-6 1층 (갈현동)</span></li>
+    <li><b>서울현방 과천점</b><span>과천대로7나길 9 1층 103,104호 (갈현동,DX타워)</span></li>
+    <li><b>손의손 과천점</b><span>과천대로7다길 16 1층 (갈현동)</span></li>
+    <li><b>솥삼조</b><span>과천대로7마길 3 1층 101호 (갈현동,루이스스테이)</span></li>
+    <li><b>숲속의 옹달샘</b><span>가일1로 30 1층 (갈현동)</span></li>
+    <li><b>스마트 경양식</b><span>과천대로7길 33 디 테크 타워 과천 A동 1층 119호 (갈현동)</span></li>
+    <li><b>신의주순대국밥</b><span>과천대로7길 65 113호,114호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>애슐리 과천점</b><span>과천대로7가길 20 프리즘스퀘어1 1층 105-108호 (갈현동)</span></li>
+    <li><b>야키토리 동작 과천지식정보타운점</b><span>과천대로7길 20 B동 144~146호 (갈현동,과천스마트케이업무시설)</span></li>
+    <li><b>얌샘김밥 과천크리에이션타워점</b><span>과천대로7길 46 1층 111호 (갈현동,과천Creation Tower)</span></li>
+    <li><b>양산도</b><span>과천대로7길 20 1층125호,126호 (갈현동)</span></li>
+    <li><b>어울림반상</b><span>과천대로7나길 60 A동 107호 (갈현동,과천어반허브)</span></li>
+    <li><b>(주)에이징테크바이오</b><span>과천대로7길 65 B동 126호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>(주)엠월드</b><span>과천대로7나길 60 A동 2층 207호 (갈현동,과천어반허브)</span></li>
+    <li><b>영자네한식뷔페</b><span>과천대로7길 20 지층 비106호, 비107호, 비110호, 비114호 (갈현동,과천스마트케이 업무시설)</span></li>
+    <li><b>오늘의 초밥</b><span>과천대로7길 46 1층 103호,104호 (갈현동)</span></li>
+    <li><b>오몽</b><span>과천대로7길 26 B동 147호 (갈현동,과천 스마트케이업무시설)</span></li>
+    <li><b>오븐마루 과천상상자이점</b><span>과천대로7길 65 B동 1층 112호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>옥된장 과천점</b><span>과천대로7길 20 B동 1층 139,140,141호 (갈현동)</span></li>
+    <li><b>온센 과천점</b><span>과천대로7길 20 1층 127호 (갈현동,과천 스마트케이업무시설)</span></li>
+    <li><b>우리곳간2호점</b><span>과천대로7길 33 상가B동 1층 101호 (갈현동,디 테크 타워 과천)</span></li>
+    <li><b>우아한전</b><span>과천대로7길 20 A동 B119호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>우장관</b><span>과천대로7길 65 A동 116,117호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>육대장 과천지식정보타운점</b><span>과천대로7나길 60 c동 105,106호 (갈현동)</span></li>
+    <li><b>육회왕자연어공주 지정타점</b><span>과천대로7길 33 A동 121호 (갈현동,디테크타워과천)</span></li>
+    <li><b>응온푸드스토리(NGON FOOD STORY)</b><span>과천대로7길 20 1층 158호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>이태리부대찌개과천지정타점</b><span>과천대로7길 20 스마트케이 업무시설 지하1층 116,117호 (갈현동)</span></li>
+    <li><b>이화향</b><span>과천대로7길 20 2층 228-231호 (과천스마트케이 업무시설) (갈현동)</span></li>
+    <li><b>(주)일삼육오푸드</b><span>과천대로7길 20 과천 스마트케이 업무시설 219-224호 (갈현동)</span></li>
+    <li><b>일품 양평해장국 디테크점</b><span>과천대로7길 33 B동 110호 (갈현동,디테크타워과천)</span></li>
+    <li><b>잔잔회</b><span>과천대로7길 33 A동 123호 (갈현동,디테크타워과천)</span></li>
+    <li><b>전주 현대옥 과천디테크점</b><span>과천대로7길 33 B동 102호 (갈현동,디테크타워 과천)</span></li>
+    <li><b>정가네</b><span>과천대로7길 20 B동 134호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>정통삼계탕</b><span>과천대로7나길 60 B006호 (갈현동,과천어반허브)</span></li>
+    <li><b>종점카레</b><span>과천대로7길 33 A동 106호 (갈현동,디테크타워과천)</span></li>
+    <li><b>지티에스버거(GTS버거)</b><span>과천대로7길 68 1층 101호 (갈현동,과천E타워)</span></li>
+    <li><b>진국본가</b><span>과천대로7길 20 123호124호 (갈현동)</span></li>
+    <li><b>진동안집</b><span>찬우물로 16 (갈현동)</span></li>
+    <li><b>참우돈가 과천점</b><span>과천대로7길 12 105호 106호 (갈현동)</span></li>
+    <li><b>(주)참우돈가 과천점 (정육점)</b><span>과천대로7길 12 105호 (갈현동,프리즘스퀘어2)</span></li>
+    <li><b>청계식품</b><span>삼현로 53-107 2층 (갈현동)</span></li>
+    <li><b>청국장앤스토리</b><span>과천대로7길 20 B동 115호 (갈현동,과천 스마트케이업무시설)</span></li>
+    <li><b>(주)쿠킹트리</b><span>과천대로7길 33 디테크타워과천 상가비동 213.214.215호 (갈현동)</span></li>
+    <li><b>트립티(TRIPTI)</b><span>과천대로7가길 20 1층 109호 (갈현동,프리즘스퀘어1)</span></li>
+    <li><b>프랭크버거 갈현점</b><span>과천대로7길 33 A동 124호 (갈현동,디테크타워)</span></li>
+    <li><b>하루엔소쿠 과천어반허브점</b><span>과천대로7나길 60 B1층 07호 (갈현동)</span></li>
+    <li><b>한가람부페</b><span>과천대로7길 20 제지동 제지1층 114호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>한상차림 코다리명가</b><span>삼현로 53-87 1,2층 (갈현동)</span></li>
+    <li><b>한양</b><span>과천대로7길 20 152,153,154호 (갈현동,과천스마트케이업무시설)</span></li>
+    <li><b>한촌설렁탕 과천지식센터점(기룡산업)</b><span>과천대로7길 20 1층 161호,164호 (갈현동)</span></li>
+    <li><b>한칼</b><span>과천대로7길 20 1층 136호, 137호 (갈현동)</span></li>
+    <li><b>한판집</b><span>과천대로7길 20 B동 149호,150호 (갈현동)</span></li>
+    <li><b>행복한순정감자탕</b><span>과천대로7길 20 118,119,120호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>주식회사 혜와</b><span>과천대로7마길 5 (갈현동)</span></li>
+    <li><b>호랭이 부엌</b><span>과천대로7길 20 1층 135호 (갈현동,과천스마트케이업무시설)</span></li>
+    <li><b>훅트포케 과천점</b><span>과천대로7길 33 상가 A동 1층 122호 (갈현동,디테크타워)</span></li>
+    <li><b>히라멘</b><span>과천대로7길 33 상가 B동 104호 (갈현동,디테크타워과천)</span></li>
+    <li><b>823포케and타르트</b><span>과천대로7길 33 A동 1층 122호 (갈현동,디테크타워과천)</span></li>
+    <li><b>THE HO</b><span>가일로 19 1층 (갈현동)</span></li>
+    </ul>
+    <p class="pl-pc">카페 · 디저트 <span>75곳</span></p>
+    <ul class="pl-pl">
+    <li><b>갈현푸드</b><span>과천대로7나길 60 B2-010A호 (갈현동,과천어반허브)</span></li>
+    <li><b>감성커피 어반허브점</b><span>과천대로7나길 60 C동 103호 (갈현동,과천어반허브)</span></li>
+    <li><b>까페 가일</b><span>과천대로7나길 18 102호 (갈현동)</span></li>
+    <li><b>달리는 커피 과천지식정보타운점</b><span>과천대로7길 26 B타워동 1층 159호 (갈현동,과천 스마트케어 업무시설)</span></li>
+    <li><b>더벤티 과천상상자이점</b><span>과천대로7길 65 B동 1층 0111호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>더줌</b><span>과천대로7나길 60 A동 1층 114호 (갈현동,과천어반허브)</span></li>
+    <li><b>도토리김밥</b><span>과천대로7길 20 B동 146호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>디앤디(DND)</b><span>과천대로7길 26 b층 152호 (갈현동)</span></li>
+    <li><b>디에케(Die ecke)</b><span>과천대로7길 65 B동 1층 101호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>로이스커피(Roy&#x27;s COFFEE)</b><span>과천대로7나길 48 1층 일부호 (갈현동)</span></li>
+    <li><b>리스페또(rispetto)</b><span>과천대로7나길 60 A동 1층 122호 (갈현동,과천어반허브)</span></li>
+    <li><b>마론블랑코(marronblanco)</b><span>과천대로7길 65 105호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>(주)마린컴퍼니</b><span>과천대로7길 33 A동 104호 (갈현동,디테크타워과천)</span></li>
+    <li><b>매머드익스프레스 과천디테크A타워점</b><span>과천대로7길 33 A동 102호 (갈현동,디테크타워과천)</span></li>
+    <li><b>매머드익스프레스 과천센텀스퀘어점</b><span>과천대로7길 20 A동 101호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>매머드익스프레스 과천크리에이션타워점</b><span>과천대로7길 46 1층 110호 (갈현동,과천Creation Tower)</span></li>
+    <li><b>매머드익스프레스과천디테크A타워점</b><span>과천대로7길 33 A동 102호 (갈현동,디테크타워과천)</span></li>
+    <li><b>매머드익스프레스과천상상자이점</b><span>과천대로7길 65 B동 0116호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>메가MGC커피 과천센텀스퀘어점</b><span>과천대로7길 20 B동 165호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>메가엠지씨커피 과천상상자이점</b><span>과천대로7길 65 B동 0119호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>미니말레 커피뢰스터 과천 지식정보타운점</b><span>과천대로7길 68 102호 (갈현동,과천E타워)</span></li>
+    <li><b>바나프레소 과천어반허브점</b><span>과천대로7나길 60 과천어반허브(A-125호) (갈현동)</span></li>
+    <li><b>바르다김선생 과천지식정보타운점</b><span>과천대로7가길 20 102호 일부 (갈현동,프리즘스퀘어1)</span></li>
+    <li><b>(주)본낭코퍼레이션</b><span>과천대로7길 33 상가 B동 107호 (갈현동,디테크타워과천)</span></li>
+    <li><b>브루루 커피 로스터스(Brewru coffee roaster</b><span>과천대로7길 20 A동 116호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>비비커피</b><span>찬우물로 21 3층 (갈현동)</span></li>
+    <li><b>빽다방 과천디테크타워점</b><span>과천대로7길 33 B동 B118호 (갈현동,디테크타워)</span></li>
+    <li><b>빽다방 과천상상자이점</b><span>과천대로7길 65 B동 0120호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>삐에로몬</b><span>과천대로7길 20 114호 (갈현동,과천스마트케어 업무시설)</span></li>
+    <li><b>샐러디 과천지식정보타운점</b><span>과천대로7길 20 148호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>샹스(B). 오연한방차</b><span>과천대로7길 33 A동 126호 (갈현동,디테크타워과천)</span></li>
+    <li><b>스마트 델리</b><span>과천대로7길 20 과천 스마트케이 업무시설 제지1층 B126호 (갈현동)</span></li>
+    <li><b>스마트델리</b><span>과천대로7길 20 과천 스마트케이 업무시설 지층B126호 (갈현동)</span></li>
+    <li><b>스쿱(SCOOP)</b><span>과천대로7길 26 과천 스마트케이 업무시설 B동 1층 151호 (갈현동)</span></li>
+    <li><b>슬로우캘리 과천지식정보타운점</b><span>과천대로7나길 60 A동 113호 (과천어반허브) (갈현동)</span></li>
+    <li><b>시스커피앤베이글(SIS COFFEE N BAGEL)</b><span>과천대로7길 20 1층 117호 (갈현동,과천 스마트케이업무시설)</span></li>
+    <li><b>아찌</b><span>과천대로7나길 37 104호 (갈현동,디 엠(The M))</span></li>
+    <li><b>얌얌</b><span>과천대로7길 33 B동 B124호 (갈현동,디테크타워과천)</span></li>
+    <li><b>오늘하루</b><span>과천대로7길 20 과천지식정보타운6블럭 내 1층117호 (갈현동)</span></li>
+    <li><b>요기</b><span>과천대로7길 65 B동 1층 111호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>우지커피 과천센텀스퀘어점</b><span>과천대로7길 20 지하 1층 B145호 (갈현동,과천 센텀스퀘어)</span></li>
+    <li><b>은빛나루카페</b><span>과천대로7길 26 B103, B104, B105호 과천 스마트케이 업무시설 (갈현동)</span></li>
+    <li><b>이루팜ELUFARM경기지사점</b><span>과천대로7바길 4 1층 101호 (갈현동)</span></li>
+    <li><b>일상사</b><span>과천대로7길 33 B동 B1층 B111호 (갈현동)</span></li>
+    <li><b>지에스25 과천디테크B점</b><span>과천대로7길 33 B상가동 B124호 B125호 (갈현동)</span></li>
+    <li><b>지콤마 (G.COMMA)</b><span>과천대로7나길 34 A-104호 가비아 앳 (갈현동)</span></li>
+    <li><b>카페 에이젯(CAFFE AZ)</b><span>과천대로7나길 60 A,-129호 (갈현동,과천어반허브)</span></li>
+    <li><b>카페공간</b><span>과천대로7길 20 제지1층 B150호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>카페누리</b><span>과천대로1길 11 1층 (갈현동)</span></li>
+    <li><b>카페블리스</b><span>과천대로7나길 9 1층 101호 (갈현동,DX타워)</span></li>
+    <li><b>카페상상</b><span>과천대로7길 65 B동 104호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>카페일마지오 광동제약점</b><span>과천대로7다길 52 1층 102호 (갈현동,광동과천타워)</span></li>
+    <li><b>커스텀커피 과천지식정보타운점</b><span>과천대로7길 20 A동 114호 (갈현동,과천스마트케이업무시설)</span></li>
+    <li><b>커피나인 과천디테크타워</b><span>과천대로7길 33 상가에이동 1층 107호 (갈현동)</span></li>
+    <li><b>커피사피엔스 과천 디테크타워점</b><span>과천대로7길 33 A동 1층 134호 (갈현동,디테크타워과천)</span></li>
+    <li><b>커피사피엔스 과천어반허브점</b><span>과천대로7나길 60 A동 1층 112호 (갈현동,과천어반허브)</span></li>
+    <li><b>컴포즈커피 과천상상자이점</b><span>과천대로7길 65 B동 121호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>컴포즈커피 과천스마트K점</b><span>과천대로7길 20 1층 (갈현동)</span></li>
+    <li><b>킨(KEEN)</b><span>과천대로7길 33 A동 1층 131 일부호 (갈현동)</span></li>
+    <li><b>킨커피(과천)중원엔지니어링(주)</b><span>과천대로7다길 60 1층 103호 (갈현동,금강공업(주)과천사옥)</span></li>
+    <li><b>타이거</b><span>과천대로7길 20 115호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>타이거커피 과천어반허브점</b><span>과천대로7나길 60 A동 110호 (과천어반허브) (갈현동)</span></li>
+    <li><b>텐퍼센트 스페셜티커피 과천디테크타워점</b><span>과천대로7길 33 B동 111호 (갈현동,디테크타워과천)</span></li>
+    <li><b>템프커피</b><span>과천대로7길 65 B동 115호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>투썸플레이스 과천정보타운점</b><span>과천대로7길 33 디테크타워과천 A동 1층 117호 118호 (갈현동)</span></li>
+    <li><b>파리바게뜨 과천지식정보점</b><span>과천대로7가길 20 102호 일부 (갈현동,프리즘스퀘어1)</span></li>
+    <li><b>파스쿠찌 과천지식정보타운점</b><span>과천대로7길 46 107호, 108호 (갈현동)</span></li>
+    <li><b>퍼떡</b><span>과천대로7길 33 A동 112호 (갈현동,디테크타워과천)</span></li>
+    <li><b>펄시커피 과천</b><span>과천대로7길 65 1층 B125호 (갈현동)</span></li>
+    <li><b>페이브베이커리 과천센텀스퀘어점</b><span>과천대로7길 20 101호,102호 (갈현동)</span></li>
+    <li><b>할리스 과천정보타운점</b><span>과천대로7가길 20 103호 일부,104호 (갈현동)</span></li>
+    <li><b>호화온도</b><span>찬우물로 24 102호 (갈현동,예다움)</span></li>
+    <li><b>호화온도 어반허브점</b><span>과천대로7나길 60 B1층 004호 (갈현동)</span></li>
+    <li><b>히어커피 과천점</b><span>과천대로7길 20 지1층 B148호 (갈현동)</span></li>
+    <li><b>Routine Coffee</b><span>과천대로7길 74 B동 1층 115호 (갈현동,메가존산학연센터)</span></li>
+    </ul>
+    <p class="pl-pc">편의점 <span>21곳</span></p>
+    <ul class="pl-pl">
+    <li><b>과천디엠점</b><span>경기도 과천시 과천대로7나길 37 1층 102호</span></li>
+    <li><b>세븐일레븐 과천스마트케이점</b><span>과천대로7길 20 A동 1층 104호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>씨유(CU) 과천갈현점</b><span>찬우물로 36 상가동 1층 101호 (갈현동,화이트스톤)</span></li>
+    <li><b>씨유(CU) 과천디엠점</b><span>과천대로7나길 37 1층 102호 (갈현동)</span></li>
+    <li><b>씨유(CU)과천정보타운점</b><span>과천대로7가길 20 1층 101호 일부 (갈현동)</span></li>
+    <li><b>지에스25 과천갈현점</b><span>과천대로7나길 18 1층 (갈현동)</span></li>
+    <li><b>지에스25 과천디테크A점</b><span>과천대로7길 33 A동 상가 120호 (갈현동,디테크타워)</span></li>
+    <li><b>지에스25 과천상상자이점</b><span>과천대로7길 65 B동 118호 (갈현동,과천상상자이타워)</span></li>
+    <li><b>지에스25 과천센텀점</b><span>과천대로7길 20 B101호, B102호 (갈현동,과천 스마트케이 업무시설)</span></li>
+    <li><b>지에스25 과천어반허브점</b><span>과천대로7나길 60 C동 107,108호 (갈현동)</span></li>
+    <li><b>지에스25 과천크리에이션점</b><span>과천대로7길 46 112호,113호 (갈현동)</span></li>
+    <li><b>지에스25 과천포레드림점</b><span>과천대로1길 15 S001동 3호 (갈현동,과천포레드림)</span></li>
+    <li><b>GS25 과천갈현점</b><span>과천대로7나길 18, 1층 (갈현동 390-10)</span></li>
+    <li><b>GS25 과천디테크A점</b><span>과천대로7길 33, A동 120호 (갈현동 554, 디테크타워)</span></li>
+    <li><b>GS25 과천디테크B점</b><span>과천대로7길 33, B동 상가 B124호, B125호 (갈현동 554)</span></li>
+    <li><b>GS25 과천상상자이점</b><span>과천대로7길 65, B동 118호 (갈현동 456)</span></li>
+    <li><b>GS25 과천센텀점</b><span>과천대로7길 20, B101호, B102호 (갈현동 427-2)</span></li>
+    <li><b>GS25 과천어반허브점</b><span>과천대로7나길 60, 1층 C107, C108호 (갈현동 492)</span></li>
+    <li><b>GS25 과천크리에이션점</b><span>과천대로7길 46, 1층 (갈현동 443)</span></li>
+    <li><b>GS25 과천포레드림점</b><span>과천대로1길 11, 상가 3호 (갈현동 599, 일원)</span></li>
+    <li><b>K7 과천스마트케이점</b><span>과천대로7길 20 (갈현동, 과천 스마트케이 업무시설)A동 1층 104호</span></li>
+    </ul>
+    <p class="pl-pc">스타벅스 (전국 매장)</p><p class="pl-pn">매장에서 직접 결제할 때만 됩니다. 사이렌오더·충전·상품권은 안 됩니다.</p>
+    </div>
+
+    <div class="callout">
+      <b>💡 음식점인데 결제가 안 된다면</b>
+      그 가게가 카드사에 음식점으로 등록되지 않은 경우입니다. 위 목록에 없는 가게는 결제되지 않습니다.
+      자주 가시는 곳이 빠져 있으면 회사 인사담당자에게 알려주세요.
+    </div>
+    <p class="muted">2026-10-24 기준입니다. 가맹점은 수시로 바뀌므로 실제와 다를 수 있습니다.</p>
+  </div>
+</section>
+
+
 <!-- 3. TIPS -->
 <section id="tips">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">03</span>
+    <div class="sec-head"><span class="sec-no">07</span>
       <h2 class="sec-title">알아두면 좋은 기능</h2></div>
     <p class="sec-sub">필요할 때 꺼내 쓰는 편의 기능들입니다.</p>
     <div class="grid2">
@@ -466,7 +1224,7 @@
 <!-- FAQ -->
 <section id="faq">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">04</span>
+    <div class="sec-head"><span class="sec-no">08</span>
       <h2 class="sec-title">자주 묻는 질문</h2></div>
 
     <details class="faq"><summary><span>카드 비밀번호가 뭐였죠?</span><span class="q">Q</span></summary>
@@ -478,9 +1236,18 @@
     <details class="faq"><summary><span>점심식대로 다른 곳에서도 결제되나요?</span><span class="q">Q</span></summary>
       <div class="a"><span class="mk">음식점에서만</span> 사용 가능합니다.<br>음식점 밖에서는 개인 잔액이 있을 때만 개인 잔액으로 결제됩니다.<br>음식점인데 결제가 실패하면 업종이 음식점으로 설정되지 않은 가맹점일 수 있으니 휴온스 담당자에게 확인해 주세요.</div></details>
 
-    <details class="faq"><summary><span>야근식대·복지포인트는 언제부터 쓸 수 있나요?</span><span class="q">Q</span></summary>
+    <details class="faq"><summary><span>야근식대는 왜 미리 들어와 있지 않나요?</span><span class="q">Q</span></summary>
+      <div class="a">야근식대는 <span class="mk">신청해서 받는 포인트</span>입니다.<br>야근한 날 코나카드 앱에서 신청하면 그때 지급됩니다. 신청 방법은 03을 참고해주세요.</div></details>
+
+    <details class="faq"><summary><span>야근식대를 신청했는데 포인트가 안 들어왔어요.</span><span class="q">Q</span></summary>
+      <div class="a">승인을 기다리는 중이거나, 반려 또는 지급 실패인 경우입니다.<br>앱 내역에서 지금 어떤 상태인지와 사유를 확인하실 수 있습니다.<br>반려·실패한 신청은 그날 받을 수 있는 횟수에 포함되지 않아 다시 신청할 수 있습니다.</div></details>
+
+    <details class="faq"><summary><span>받은 야근식대를 그날 다 못 썼어요.</span><span class="q">Q</span></summary>
+      <div class="a">지급 받으신 야근식대는 <span class="mk">자정까지 사용하지 않으시면 소멸되어 사라집니다.</span><br>남은 금액은 다음 날로 넘어가지 않습니다.<br>사용처와 사용 시간은 회사 인사담당자에게 확인해주세요!</div></details>
+
+    <details class="faq"><summary><span>복지포인트는 언제부터 쓸 수 있나요?</span><span class="q">Q</span></summary>
       <div class="a"><span class="mk">추가 예정</span>입니다.<br>지급 시작 시 회사에서 별도 안내드립니다.</div></details>
-    <!-- TODO: 야근식대/복지포인트 지급 시작 시 포인트 차감 순서·사용 시간대 FAQ 추가 -->
+    <!-- TODO: 점심식대와 야근식대가 함께 있을 때 어느 포인트가 먼저 차감되는지 확인 후 FAQ 추가 -->
 
     <details class="faq"><summary><span>카드를 잃어버렸어요.</span><span class="q">Q</span></summary>
       <div class="a">코나카드 앱에서 <span class="mk">즉시 분실신고</span> 후, 회사 복지담당자에게 재발급을 요청하세요.<br>잔여 포인트는 새 카드로 이관됩니다.</div></details>
@@ -515,6 +1282,226 @@
       if(f){ f.classList.add('no-img'); }
     });
   });
+
+  // 위쪽 그림이 늦게 뜨면 높이가 밀려 앵커가 엉뚱한 곳에 멈춘다.
+  // 그림이 다 뜬 뒤에 옮겨 준다.
+  function jump(hash){
+    var el = document.querySelector(hash);
+    if(!el){ return; }
+    el.scrollIntoView({ behavior:'smooth' });
+    // 아래쪽 그림이 뒤늦게 뜨면 높이가 밀린다. 잠시 뒤 자리를 다시 잡아 준다.
+    [400, 900, 1600].forEach(function(ms){
+      setTimeout(function(){
+        var top = el.getBoundingClientRect().top;
+        if (Math.abs(top) > 24){ el.scrollIntoView(); }
+      }, ms);
+    });
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if(!a){ return; }
+    var hash = a.getAttribute('href');
+    if(hash.length < 2){ return; }
+    e.preventDefault();
+    history.pushState(null, '', hash);
+    jump(hash);
+  });
+  if(location.hash){ jump(location.hash); }
+</script>
+
+<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=ojrpb7is2h"></script>
+<script id="pl-data" type="application/json">[{"n":"홍루원","t":["일반음식점 기타","휴게음식점"],"a":"경기 성남시 수정구 대왕판교로 812 시흥동,지하1층","z":"13448","lat":37.412822,"lng":127.100324,"x":false},{"n":"짬뽕지존 판교점","t":["중식"],"a":"경기 성남시 수정구 대왕판교로 830 1층 (시흥동)","z":"13448","lat":37.414325,"lng":127.101222,"x":false},{"n":"콩가커피","t":["커피/음료전문점"],"a":"경기 성남시 수정구 대왕판교로816번길 41 지층 (시흥동)","z":"13448","lat":37.412598,"lng":127.100402,"x":false},{"n":"탐앤탐스 세종연구소 입구점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 대왕판교로 850 1층 102호 (시흥동)","z":"13448","lat":37.416166,"lng":127.102077,"x":false},{"n":"㈜이마트24_R대왕판교로점","t":["편의점"],"a":"경기도 성남시 수정구 대왕판교로 812 .","z":"13448","lat":null,"lng":null,"x":false},{"n":"어머니밥상","t":["한식"],"a":"경기 성남시 수정구 대왕판교로 824 1층 남측 (시흥동)","z":"13448","lat":37.413885,"lng":127.100959,"x":false},{"n":"정원식당","t":["한식"],"a":"경기 성남시 수정구 시흥동 280-4번지 B107호","z":"13448","lat":null,"lng":null,"x":false},{"n":"청담식당","t":["한식"],"a":"경기 성남시 수정구 대왕판교로 842 1층 201호 (시흥동,MHY)","z":"13448","lat":37.415353,"lng":127.101653,"x":false},{"n":"감포회플러스","t":["휴게음식점"],"a":"경기 성남시 수정구 대왕판교로 850 1층 1호 (시흥동)","z":"13448","lat":37.416166,"lng":127.102077,"x":false},{"n":"(주)에코팜유업(EcoFarm Dairy)","t":["기타 식품"],"a":"경기 성남시 수정구 달래내로27번길 3 1층 (금토동)","z":"13449","lat":null,"lng":null,"x":false},{"n":"거궁찬 판교점","t":["기타 식품"],"a":"경기 성남시 수정구 창업로 17 B동 1층 104호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"빅딜(vicdeal)","t":["기타 식품"],"a":"경기 성남시 수정구 창업로 43 1층 41호 (시흥동,글로벌비즈센터 업무동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"종로북앤베이커리 판교점","t":["서점"],"a":"경기 성남시 수정구 창업로 17 B동 B1층 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":true},{"n":"(주)에스앤에스컴퍼니 판교파미어스몰 서가앤","t":["양식"],"a":"경기 성남시 수정구 창업로 17 A동 1층 106-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"(주)카츄마마 파미어스몰점","t":["양식"],"a":"경기 성남시 수정구 창업로 17 아이스퀘어 D동 지상2층 207-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"(주)파티나라하이비스(판교점)","t":["양식"],"a":"경기 성남시 수정구 창업로 18 3층 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"더몰트하우스서핑시티","t":["양식"],"a":"경기 성남시 수정구 창업로 18 1층 107-2호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"스텝밀","t":["양식"],"a":"경기 성남시 수정구 창업로 43 1층 B-105, B-106호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"언버튼","t":["양식"],"a":"경기 성남시 수정구 창업로 43 A동 107호 언버튼 (시흥동,판교글로벌비즈센터)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"우스블랑 판교파미어스몰점","t":["양식"],"a":"경기 성남시 수정구 창업로 18 1층 107-1호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"토끼정","t":["양식"],"a":"경기 성남시 수정구 창업로 17 A동 1층 106-2호, 106-3호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"파파보틀","t":["양식"],"a":"경기 성남시 수정구 창업로 17 f동 지하1층 b101호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"101번지 남산돈까스 판교파미어스몰점","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 17 C동 지하1층 B109-2호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"델리기업지원허브점","t":["일반음식점 기타"],"a":"경기 성남시 수정구 대왕판교로 815 5층 501호.503호 (시흥동,판교창조경제밸리)","z":"13449","lat":37.413787,"lng":127.099613,"x":false},{"n":"돈우모리","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 42 지하1층 B120호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"본도시락 판교 파미어스점","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 17 E동 지하1층 B105-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"빤닭빤닭 판교점","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 18 판교제2테크노밸리 C1동 1층 117호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"삼청동샤브(판교아이스퀘어점)","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 18 판교제2테크노밸리C1동2층210-2호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"시먼당 파미어스몰","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 18 2층 201-3호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"제이브이엘(JVL)부대찌개 판교아이스퀘어점","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 17 2층 206-3호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"주식회사 화화돈판교파미어스","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 18 피1 2층 202-1호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"판교 즉석떡복이&amp;주먹밥","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 42 지하1층 B110호 (시흥동,판교 제2테크노밸리 경기 기업성장센터)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"퍼틴 베트남쌀국수","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 17 2층 201-5 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"하루엔소쿠 판교점","t":["일반음식점 기타"],"a":"경기 성남시 수정구 창업로 42 1층 121호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"힘난다버거 판교티시(TC)점","t":["일반음식점 기타"],"a":"경기 성남시 수정구 대왕판교로 815 상가동 107호 (시흥동,판교창조경제밸리)","z":"13449","lat":37.413787,"lng":127.099613,"x":false},{"n":"(주)심플프로젝트컴퍼니","t":["일식/생선회집"],"a":"경기 성남시 수정구 창업로 17 판교아이스퀘어D동 지층B106-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"백소정 판교제2테크노밸리점","t":["일식/생선회집"],"a":"경기 성남시 수정구 창업로 43 1층 .A-105호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"아비꼬 판교파미어스몰점","t":["일식/생선회집"],"a":"경기 성남시 수정구 창업로 17 B동2층201-3호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"우동키노야 판교파미어스몰점","t":["일식/생선회집"],"a":"경기 성남시 수정구 창업로 17 D동 2층 207-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"창업의신에프앤비 주식회사","t":["일식/생선회집"],"a":"경기 성남시 수정구 대왕판교로 815 1층 106호 (시흥동,판교창조경제밸리)","z":"13449","lat":37.413787,"lng":127.099613,"x":false},{"n":"천애부프리미엄 판교파미어스몰점","t":["일식/생선회집"],"a":"경기 성남시 수정구 창업로 18 2층 207호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"해루(어)","t":["일식/생선회집"],"a":"경기 성남시 수정구 창업로 43 1층. B-101호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"히노아지 판교파미어스몰점","t":["일식/생선회집"],"a":"경기 성남시 수정구 창업로 17 B동 201-2호 (시흥동)","z":"13449","lat":37.412429,"lng":127.098161,"x":false},{"n":"고메화담","t":["정육점"],"a":"경기 성남시 수정구 창업로 43 1층 108호 (시흥동,업무동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"(주)버터풀앤크리멀러스","t":["제과점/아이스크림점"],"a":"경기 성남시 수정구 창업로 18 1층 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"뚜레쥬르 판교파미어스몰점","t":["제과점/아이스크림점"],"a":"경기 성남시 수정구 창업로 17 B동 103-2호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"홍짜장 판교파미어스점","t":["중식"],"a":"경기 성남시 수정구 창업로 17 F동 2층 202호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"화란(판교파미어스몰점)","t":["중식"],"a":"경기 성남시 수정구 창업로 17 C동 2층 208-1,208-2,208-3호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"Hola C&#x27;est bon","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 C2동 2층 202-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"감성커피 판교아이스퀘어점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 제에프동 지상1층 105호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"그라츠커피랩 판교파미어스몰점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 18 119호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"라라스페이스","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 42 1층 118호 (시흥동,판교제2테크노밸리 경기기업성장센터)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"롯데웰푸드(주)(푸) 파스퇴르밀크바 파미어스","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 18 CI동 2층 211호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"린지커피","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 43 1층 A-102 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"마당(MAADANG) 290","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 F동 3층 303-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"매머드커피 익스프레스 판교제2테크노밸리점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 54 지하1층 B105호 (시흥동)","z":"13449","lat":37.411157,"lng":127.094588,"x":false},{"n":"메가MGC커피 제2테크노밸리점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 43 A동 104호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"메가엠지씨커피 판교파미어스몰점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 18 2층 204-1호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"멜티코","t":["커피/음료전문점","휴게음식점"],"a":"경기 성남시 수정구 창업로 17 F동 103호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"바캉스","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로40번길 6 근린생활시설동 지2층 2호 (시흥동,판교 제2테크노밸리 LH 1단지)","z":"13449","lat":37.412518,"lng":127.095303,"x":false},{"n":"시나본 판교파미어스점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 B동 지하1층 B103-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"쓰리도어즈커피(3doorscoffee)","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 43 B동 1층 107호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"에스이커피 기업성장센터점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 42 1층 107, 108, 109호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"요거트담은빙수 빙프레소 판교파미어스몰점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 18 B1층 롯데시네마 판교 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"원유로스페셜티 판교 제2테크노밸리점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 C2동 지1층 B104-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"이디야커피 판교파미어스몰점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 C2블록 B1층 B103-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"이에스에프피(ESFP)","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 43 A동 1층 101호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"주니아판교IT센터점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로40번길 30 판교IT센터 B208호,B209호 (시흥동)","z":"13449","lat":37.412228,"lng":127.093077,"x":false},{"n":"지구마을사회적협동조합","t":["커피/음료전문점"],"a":"경기 성남시 수정구 대왕판교로 825 본관 1층 (시흥동)","z":"13449","lat":37.414157,"lng":127.100386,"x":false},{"n":"카페57에비뉴","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 57 1층 102호 (시흥동)","z":"13449","lat":37.410629,"lng":127.095054,"x":false},{"n":"카페리빈","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 42 1층 122호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"커스텀커피 판교테크노밸리점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로40번길 6 근린생활시설동 지하2층 3호 (시흥동,판교 제2테크노밸리 LH 1단지)","z":"13449","lat":37.412518,"lng":127.095303,"x":false},{"n":"커피나인 판교제2테크노밸리","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 55 1층 106호 (시흥동)","z":"13449","lat":37.411002,"lng":127.095025,"x":false},{"n":"컴포즈커피 판교제2테크노밸리점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 55 1층 104호 (시흥동)","z":"13449","lat":37.411002,"lng":127.095025,"x":false},{"n":"컴포즈커피 판교파미어스몰점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 C2블록 1층 102-2 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"콜드앤브런치","t":["커피/음료전문점"],"a":"경기 성남시 수정구 대왕판교로 801 110호 (시흥동,기업지원허브)","z":"13449","lat":37.411914,"lng":127.098974,"x":false},{"n":"퀀트커피","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로40번길 6 근린생활시설동 지하2층 4호 (시흥동,판교 제2테크노밸리 LH 1단지)","z":"13449","lat":37.412518,"lng":127.095303,"x":false},{"n":"텐퍼센트 제2차판교테크노벨리점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 55 1층 103호 (시흥동)","z":"13449","lat":37.411002,"lng":127.095025,"x":false},{"n":"투썸플레이스 판교파미어스몰점","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 17 B동 1층 101호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"풀무원푸드앤컬처 키친42풀무원","t":["커피/음료전문점","일반음식점 기타"],"a":"경기 성남시 수정구 창업로40번길 20 지하1층 (시흥동,SW드림센터)","z":"13449","lat":37.412635,"lng":127.09373,"x":false},{"n":"프레소 커피 랩(PRESO COFFEE LAB)","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 42 지1층 B103호 판교 제2테크노밸리 경기 (시흥동,기업성장센터)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"피크니크","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 18 C1동 1층 피크니크 111호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"피크니크 주식회사","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 18 1층 111호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"하와이킴","t":["커피/음료전문점"],"a":"경기 성남시 수정구 창업로 18 2층 203호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"(주)피피","t":["패스트푸드점"],"a":"경기 성남시 수정구 창업로 18 O1동 1층 112호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"블리스버거 판교2밸리점","t":["패스트푸드점"],"a":"경기 성남시 수정구 창업로 42 지하1층 B116호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"오지(OG)버거 판교1호점","t":["패스트푸드점"],"a":"경기 성남시 수정구 창업로 17 B동 1층 102-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"파파존스 판교2테크노밸리점","t":["패스트푸드점"],"a":"경기 성남시 수정구 창업로 17 F동지1층B102호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"훅트포케판교제2테크노밸리점","t":["패스트푸드점"],"a":"경기 성남시 수정구 창업로 43 1층. A-108호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"GS25 대왕판교점","t":["편의점"],"a":"경기 성남시 수정구 달래내로 40 (금토동 270-9)","z":"13449","lat":37.408909,"lng":127.095867,"x":false},{"n":"GS25 파미어스1점","t":["편의점"],"a":"경기 성남시 수정구 창업로 18, 파미어스몰 P1. 107-3호 (시흥동 296-3)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"GS25 파미어스2점","t":["편의점"],"a":"경기 성남시 수정구 창업로 17, 105호 (시흥동 288-2)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"GS25 판교지식센터점","t":["편의점"],"a":"경기 성남시 수정구 창업로 42, B111호 (시흥동 293)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"GS25 판교테크노밸리점","t":["편의점"],"a":"경기 성남시 수정구 대왕판교로 815, 상가 109호 (시흥동 285-2, 기업지원허브)","z":"13449","lat":null,"lng":null,"x":false},{"n":"K7 판교LH테크노점","t":["편의점"],"a":"경기 성남시 수정구 창업로40번길 6 판교제2테크노밸리 A1블록 단지내상가 B205호","z":"13449","lat":null,"lng":null,"x":false},{"n":"K7 판교아이스퀘어점","t":["편의점"],"a":"경기 성남시 수정구 창업로 17 (시흥동) F동 B102호","z":"13449","lat":null,"lng":null,"x":false},{"n":"㈜코리아세븐_판교기업센터점","t":["편의점"],"a":"경기도 성남시 수정구 창업로 54 판교제2테크노밸리기업성장센터(시흥동) .","z":"13449","lat":null,"lng":null,"x":false},{"n":"성남글로벌융합센터점","t":["편의점"],"a":"경기도 성남시 수정구 달래내로 46","z":"13449","lat":null,"lng":null,"x":false},{"n":"성남대왕판교TG점","t":["편의점"],"a":"경기 성남시 수정구 달래내로 40","z":"13449","lat":37.408909,"lng":127.095867,"x":false},{"n":"세븐일레븐 판교LH테크노점","t":["편의점"],"a":"경기 성남시 수정구 창업로40번길 6 판교 제2테크노밸리 A1블록 단지내상가 B205호 (시흥동,판교 제2테크노밸리 LH 1단지)","z":"13449","lat":37.412518,"lng":127.095303,"x":false},{"n":"세븐일레븐 판교기업센터점","t":["편의점"],"a":"경기 성남시 수정구 창업로 54 판교 제2테크노밸리 판교기업성장센터 B106호 (시흥동)","z":"13449","lat":37.411157,"lng":127.094588,"x":false},{"n":"씨유(CU) 성남대왕판교TG점","t":["편의점"],"a":"경기 성남시 수정구 달래내로 40 상가. 지1층 우측 3칸 (금토동)","z":"13449","lat":37.408909,"lng":127.095867,"x":false},{"n":"씨유(CU)판교글로벌비즈센터점","t":["편의점"],"a":"경기 성남시 수정구 창업로 43 A동 106호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"씨유(CU)한국국제협력단점","t":["편의점"],"a":"경기 성남시 수정구 대왕판교로 825 1층 구내편의점 (시흥동)","z":"13449","lat":37.414157,"lng":127.100386,"x":false},{"n":"이마트24 성남글로벌융합센터점 (한우리)","t":["편의점"],"a":"경기 성남시 수정구 달래내로 46 2층 207호 (시흥동)","z":"13449","lat":37.408791,"lng":127.095184,"x":false},{"n":"이마트24 판교디앤써밋점","t":["편의점"],"a":"경기 성남시 수정구 창업로 55 상가동 101호, 102호 후면일부 (시흥동)","z":"13449","lat":37.411002,"lng":127.095025,"x":false},{"n":"이마트24판교IT센터점","t":["편의점"],"a":"경기 성남시 수정구 창업로40번길 30 지하2층206호,207호 (시흥동)","z":"13449","lat":37.412228,"lng":127.093077,"x":false},{"n":"지에스(GS)25 파미어스1점","t":["편의점"],"a":"경기 성남시 수정구 창업로 18 107-3호 (시흥동,파미어스몰P1)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"지에스(GS)25 파미어스1점(무인자판기)","t":["편의점"],"a":"경기 성남시 수정구 창업로 18 107-3호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"지에스(GS25)파미어스2점","t":["편의점"],"a":"경기 성남시 수정구 창업로 17 105호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"지에스25 판교지식센터점","t":["편의점"],"a":"경기 성남시 수정구 창업로 42 지하1층 B111호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"지에스25 판교테크노밸리점","t":["편의점"],"a":"경기 성남시 수정구 대왕판교로 815 109호 (시흥동,판교창조경제밸리)","z":"13449","lat":37.413787,"lng":127.099613,"x":false},{"n":"판교IT센터점","t":["편의점"],"a":"경기도 성남시 수정구 창업로40번길 30","z":"13449","lat":null,"lng":null,"x":false},{"n":"판교디앤써밋점","t":["편의점"],"a":"경기도 성남시 수정구 창업로 55","z":"13449","lat":null,"lng":null,"x":false},{"n":"편의점","t":["편의점"],"a":"경기도 성남시 수정구 달래내로 27 B1층 .","z":"13449","lat":null,"lng":null,"x":false},{"n":"편의점","t":["편의점"],"a":"경기도 성남시 수정구 대왕판교로 889, (시흥동) .","z":"13449","lat":null,"lng":null,"x":false},{"n":"한국국제협력단점","t":["편의점"],"a":"경기도 성남시 수정구 대왕판교로 825 한국국제협력단","z":"13449","lat":37.414157,"lng":127.100386,"x":false},{"n":"(주)마스터다이닝 해담가","t":["한식"],"a":"경기 성남시 수정구 창업로 17 A동 1층 107호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"(주)울림푸드한식뷔페 판교아이스퀘어점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 F동 지하1층 B104호-B107호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"1992덮밥and짜글이 판교파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 A동2층 203-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"거반상 판교점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 A동 1층 106-3호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"곰작골나주곰탕 판교점","t":["한식"],"a":"경기 성남시 수정구 창업로 54 상가 B동 103호 (시흥동,판교제2테크노밸리기업성장센터)","z":"13449","lat":37.411157,"lng":127.094588,"x":false},{"n":"금토한우","t":["한식"],"a":"경기 성남시 수정구 달래내로 14 지하1층 (금토동)","z":"13449","lat":37.409688,"lng":127.098274,"x":false},{"n":"다락솥 판교 파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 18 208호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"담소소사골순대육개장 판교4호점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 D동2층 207-3호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"더진국 판교파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 18 2층 202-2호, 202-3호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"델리커리 판교파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 18 P1동 2층 210-1호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"도월","t":["한식"],"a":"경기 성남시 수정구 달래내로28번길 6 지하1층, 1층. (금토동)","z":"13449","lat":37.409219,"lng":127.097476,"x":false},{"n":"돗가비 불 쭈꾸미","t":["한식"],"a":"경기 성남시 수정구 창업로 43 A동 1층 3호 (시흥동)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"동해강릉초당 짬뽕순두부 판교파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 E동 206-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"런치포유","t":["한식"],"a":"경기 성남시 수정구 창업로 43 B-110, B-111,B-112호 (시흥동,글로벌비즈센터)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"모모유부 판교파미어스몰","t":["한식"],"a":"경기 성남시 수정구 창업로 17 지하1층 비104-1호 (시흥동,파미어스몰)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"밀본 파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 B동 2층 201-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"백경 한우 판교본점","t":["한식"],"a":"경기 성남시 수정구 창업로 42 지하1층 B117호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"북창동순두부 판교파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 18 2층 209호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"송원식당","t":["한식"],"a":"경기 성남시 수정구 창업로40번길 6 G동 2층 12호 (시흥동,판교 제2테크노밸리 LH 1단지)","z":"13449","lat":37.412518,"lng":127.095303,"x":false},{"n":"신황산벌","t":["한식"],"a":"경기 성남시 수정구 달래내로 40 지층 (금토동)","z":"13449","lat":37.408909,"lng":127.095867,"x":false},{"n":"오백국수 판교LH테크노점","t":["한식"],"a":"경기 성남시 수정구 창업로40번길 6 G동 2층 7호 (시흥동,판교 제2테크노밸리 LH 1단지)","z":"13449","lat":37.412518,"lng":127.095303,"x":false},{"n":"오투닭갈비&amp;부대찌개 판교아이스퀘어점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 F동 201호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"오한수우육면가 판교파미어스몰점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 A동 2층 203-1호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"온담","t":["한식"],"a":"경기 성남시 수정구 창업로 17 B동 201-4호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"이태리부대찌개 제2판교점","t":["한식"],"a":"경기 성남시 수정구 창업로 42 지하1층 B113호 (시흥동)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"전라도 한식밥상","t":["한식"],"a":"경기 성남시 수정구 달래내로28번길 10 지하1층 B03호 (금토동,럭스빌)","z":"13449","lat":37.409595,"lng":127.097489,"x":false},{"n":"전주한식뷔페","t":["한식"],"a":"경기 성남시 수정구 달래내로 40 1층 (금토동)","z":"13449","lat":37.408909,"lng":127.095867,"x":false},{"n":"청계산 담백미","t":["한식"],"a":"경기 성남시 수정구 달래내로 22 1층 (금토동)","z":"13449","lat":37.409251,"lng":127.097769,"x":false},{"n":"청계산담백미 가든","t":["한식"],"a":"경기 성남시 수정구 달래내로28번길 8 1층 (금토동)","z":"13449","lat":37.4094,"lng":127.097486,"x":false},{"n":"청록미나리식당 판교점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 C동 1층 110-2호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"탄탄면공방 판교아이스퀘어점","t":["한식"],"a":"경기 성남시 수정구 창업로 17 F동 212호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"판교감자탕보쌈","t":["한식"],"a":"경기 성남시 수정구 창업로 42 지하1층 B114호 (시흥동,판교제2테크노밸리경기기업성장센터)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"판교옥","t":["한식"],"a":"경기 성남시 수정구 창업로 57 1층 106호 107호 (시흥동)","z":"13449","lat":37.410629,"lng":127.095054,"x":false},{"n":"판교제일순대국","t":["한식"],"a":"경기 성남시 수정구 창업로 43 B동 108호 (시흥동,음식점업)","z":"13449","lat":37.411791,"lng":127.095605,"x":false},{"n":"푸주옥설렁탕집","t":["한식"],"a":"경기 성남시 수정구 시흥동 223 1층","z":"13449","lat":37.420375,"lng":127.10183,"x":false},{"n":"풍경한식뷔페","t":["한식"],"a":"경기 성남시 수정구 창업로 42 1층 114호,115호,116호 (시흥동,판교 제2테크노밸리 경기 기업성장센터)","z":"13449","lat":37.412192,"lng":127.094631,"x":false},{"n":"누하스 플레이(카페)","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로 18 C1동 2층 204-3(일부)호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"단무지","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로40번길 30 지하2층 B210호 (시흥동)","z":"13449","lat":37.412228,"lng":127.093077,"x":false},{"n":"롯데시네마 판교_티켓 외","t":["휴게음식점"],"a":"경기 성남시 수정구 달래내로 29 판교 (금토동,롯데시네마)","z":"13449","lat":null,"lng":null,"x":false},{"n":"바디쉐프","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로 17 B동3층301-3호 (시흥동,판교아이스퀘어)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"빙프레소요거트베이커리 판교파미어스몰점","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로 18 지하1층 일부호 (시흥동)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"샐러디 판교제2테크노밸리점","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로 57 1층 103호 (시흥동)","z":"13449","lat":37.410629,"lng":127.095054,"x":false},{"n":"샐러딧 판교파미어스점","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로 17 판교아이스퀘어 E동 지하1층 B108호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"와플샵","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로 18 211호 (시흥동,판교아이스퀘어 c1블록 지상 2층)","z":"13449","lat":37.413106,"lng":127.098117,"x":false},{"n":"피키샐리","t":["휴게음식점"],"a":"경기 성남시 수정구 창업로 17 A동 지층 B104-3호 (시흥동)","z":"13449","lat":37.412618,"lng":127.098138,"x":false},{"n":"(주)에이징테크바이오","t":["기타 식품"],"a":"경기 과천시 과천대로7길 65 B동 126호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"(주)엠월드","t":["기타 식품"],"a":"경기 과천시 과천대로7나길 60 A동 2층 207호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"똑반","t":["기타 식품"],"a":"경기 과천시 가일1로 10 1층 (갈현동)","z":"13840","lat":37.417087,"lng":126.979401,"x":false},{"n":"주식회사 미니말레","t":["기타 식품"],"a":"경기 과천시 과천대로7길 65 B동 201호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"청계식품","t":["기타 식품"],"a":"경기 과천시 삼현로 53-107 2층 (갈현동)","z":"13840","lat":37.416623,"lng":126.972886,"x":false},{"n":"바른식탁 어반","t":["부페"],"a":"경기 과천시 과천대로7나길 60 B1층008호(과천어반허즈) (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"THE HO","t":["양식"],"a":"경기 과천시 가일로 19 1층 (갈현동)","z":"13840","lat":37.416192,"lng":126.982402,"x":false},{"n":"갤러리 카페 봄","t":["양식"],"a":"경기 과천시 가일로 15-3 1층 (갈현동)","z":"13840","lat":37.416038,"lng":126.982738,"x":false},{"n":"더블타코(Double Taco)","t":["양식"],"a":"경기 과천시 과천대로7길 33 B동 1층 113호 (갈현동,상가)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"반포식스 과천지식정보타운점","t":["양식"],"a":"경기 과천시 과천대로7가길 20 103호 일부 (갈현동,프리즘스퀘어1)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"배시시홈","t":["양식"],"a":"경기 과천시 과천대로7마길 19 101호 (갈현동)","z":"13840","lat":37.415836,"lng":126.981278,"x":false},{"n":"스마트 경양식","t":["양식"],"a":"경기 과천시 과천대로7길 33 디 테크 타워 과천 A동 1층 119호 (갈현동)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"(주)더드림 과천지점","t":["일반음식점 기타"],"a":"경기 과천시 갈현동 394-3번지","z":"13840","lat":null,"lng":null,"x":false},{"n":"823포케and타르트","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 33 A동 1층 122호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"과천뚝빵집","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 20 B동 1층 143호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"꾸아과천디테크점","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 33 A동 1층 105호 (갈현동,디 테크 타워 과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"디안포","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 65 B동 117호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"디테크 한식뷔페","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 33 B동 B119호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"딥인버터","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 33 A동 113호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"미분당 과천점","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7나길 60 A동 111호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"삼성웰스토리(주)JW과천","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 38 11층 JW 이노스퀘어 (갈현동)","z":"13840","lat":37.41454,"lng":126.977933,"x":false},{"n":"삼성웰스토리(주)광동제약","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7다길 52 광동과천타워 지하1층.(1층) (갈현동)","z":"13840","lat":37.415848,"lng":126.977877,"x":false},{"n":"삼성웰스토리(주)메가존산학연센터","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 74 지하1층 (갈현동)","z":"13840","lat":37.417373,"lng":126.97715,"x":false},{"n":"응온푸드스토리(NGON FOOD STORY)","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 20 1층 158호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"이태리부대찌개과천지정타점","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 20 스마트케이 업무시설 지하1층 116,117호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"트립티(TRIPTI)","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7가길 20 1층 109호 (갈현동,프리즘스퀘어1)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"훅트포케 과천점","t":["일반음식점 기타"],"a":"경기 과천시 과천대로7길 33 상가 A동 1층 122호 (갈현동,디테크타워)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"(주)고메드갤러리아 KOTITI시험연구원 사내진","t":["일반잡화판매점"],"a":"경기 과천시 과천대로7나길 48 지하1층 (갈현동)","z":"13840","lat":37.417264,"lng":126.976681,"x":true},{"n":"(주)리슈위드(오레노카츠과천정보타운점)","t":["일식/생선회집"],"a":"경기 과천시 과천대로7가길 20 1층101호일부 (갈현동,프리즘스퀘어1)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"남해물고기이음","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 20 1층 166, 167호 (갈현동,과천스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"노렌인","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 20 A동 225호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"만춘","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 26 B동 1층 160,162,163호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.41464,"lng":126.97932,"x":false},{"n":"야키토리 동작 과천지식정보타운점","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 20 B동 144~146호 (갈현동,과천스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"양산도","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 20 1층125호,126호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"오늘의 초밥","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 46 1층 103호,104호 (갈현동)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"온센 과천점","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 20 1층 127호 (갈현동,과천 스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"잔잔회","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 33 A동 123호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"종점카레","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 33 A동 106호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"하루엔소쿠 과천어반허브점","t":["일식/생선회집"],"a":"경기 과천시 과천대로7나길 60 B1층 07호 (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"히라멘","t":["일식/생선회집"],"a":"경기 과천시 과천대로7길 33 상가 B동 104호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"(주)참우돈가 과천점 (정육점)","t":["정육점"],"a":"경기 과천시 과천대로7길 12 105호 (갈현동,프리즘스퀘어2)","z":"13840","lat":37.413414,"lng":126.98052,"x":false},{"n":"(주)본낭코퍼레이션","t":["제과점/아이스크림점"],"a":"경기 과천시 과천대로7길 33 상가 B동 107호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"파리바게뜨 과천지식정보점","t":["제과점/아이스크림점"],"a":"경기 과천시 과천대로7가길 20 102호 일부 (갈현동,프리즘스퀘어1)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"페이브베이커리 과천센텀스퀘어점","t":["제과점/아이스크림점"],"a":"경기 과천시 과천대로7길 20 101호,102호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"호화온도","t":["제과점/아이스크림점"],"a":"경기 과천시 찬우물로 24 102호 (갈현동,예다움)","z":"13840","lat":37.417044,"lng":126.985121,"x":false},{"n":"고불짬뽕","t":["중식"],"a":"경기 과천시 과천대로7나길 60 (지1층 5호) (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"금문원","t":["중식"],"a":"경기 과천시 과천대로7나길 9 DX타워 201,202호 (갈현동)","z":"13840","lat":37.415029,"lng":126.978282,"x":false},{"n":"마라공방 과천점","t":["중식"],"a":"경기 과천시 과천대로7길 20 156,157호 과천 스마트케이 업무시설 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"만보성","t":["중식"],"a":"경기 과천시 과천대로 155 1층 (갈현동)","z":"13840","lat":37.415775,"lng":126.983959,"x":false},{"n":"이화향","t":["중식"],"a":"경기 과천시 과천대로7길 20 2층 228-231호 (과천스마트케이 업무시설) (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"(주)마린컴퍼니","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 A동 104호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"Routine Coffee","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 74 B동 1층 115호 (갈현동,메가존산학연센터)","z":"13840","lat":37.417373,"lng":126.97715,"x":false},{"n":"감성커피 어반허브점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 60 C동 103호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"까페 가일","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 18 102호 (갈현동)","z":"13840","lat":37.415623,"lng":126.978849,"x":false},{"n":"달리는 커피 과천지식정보타운점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 26 B타워동 1층 159호 (갈현동,과천 스마트케어 업무시설)","z":"13840","lat":37.41464,"lng":126.97932,"x":false},{"n":"더벤티 과천상상자이점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 1층 0111호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"더줌","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 60 A동 1층 114호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"디앤디(DND)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 26 b층 152호 (갈현동)","z":"13840","lat":37.41464,"lng":126.97932,"x":false},{"n":"디에케(Die ecke)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 1층 101호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"로이스커피(Roy&#x27;s COFFEE)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 48 1층 일부호 (갈현동)","z":"13840","lat":37.417264,"lng":126.976681,"x":false},{"n":"리스페또(rispetto)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 60 A동 1층 122호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"마론블랑코(marronblanco)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 105호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"매머드익스프레스 과천디테크A타워점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 A동 102호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"매머드익스프레스 과천센텀스퀘어점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 A동 101호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"매머드익스프레스 과천크리에이션타워점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 46 1층 110호 (갈현동,과천Creation Tower)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"매머드익스프레스과천디테크A타워점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 A동 102호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"매머드익스프레스과천상상자이점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 0116호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"메가MGC커피 과천센텀스퀘어점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 B동 165호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"메가엠지씨커피 과천상상자이점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 0119호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"미니말레 커피뢰스터 과천 지식정보타운점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 68 102호 (갈현동,과천E타워)","z":"13840","lat":37.416707,"lng":126.976952,"x":false},{"n":"바나프레소 과천어반허브점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 60 과천어반허브(A-125호) (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"브루루 커피 로스터스(Brewru coffee roaster","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 A동 116호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"비비커피","t":["커피/음료전문점"],"a":"경기 과천시 찬우물로 21 3층 (갈현동)","z":"13840","lat":37.416833,"lng":126.985351,"x":false},{"n":"빽다방 과천디테크타워점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 B동 B118호 (갈현동,디테크타워)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"빽다방 과천상상자이점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 0120호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"삐에로몬","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 114호 (갈현동,과천스마트케어 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"샹스(B). 오연한방차","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 A동 126호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"스쿱(SCOOP)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 26 과천 스마트케이 업무시설 B동 1층 151호 (갈현동)","z":"13840","lat":37.41464,"lng":126.97932,"x":false},{"n":"시스커피앤베이글(SIS COFFEE N BAGEL)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 1층 117호 (갈현동,과천 스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"얌얌","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 B동 B124호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"오늘하루","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 과천지식정보타운6블럭 내 1층117호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"요기","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 1층 111호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"우지커피 과천센텀스퀘어점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 지하 1층 B145호 (갈현동,과천 센텀스퀘어)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"은빛나루카페","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 26 B103, B104, B105호 과천 스마트케이 업무시설 (갈현동)","z":"13840","lat":37.41464,"lng":126.97932,"x":false},{"n":"이루팜ELUFARM경기지사점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7바길 4 1층 101호 (갈현동)","z":"13840","lat":37.414866,"lng":126.981638,"x":false},{"n":"일상사","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 B동 B1층 B111호 (갈현동)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"지콤마 (G.COMMA)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 34 A-104호 가비아 앳 (갈현동)","z":"13840","lat":37.416931,"lng":126.978239,"x":false},{"n":"카페 에이젯(CAFFE AZ)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 60 A,-129호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"카페공간","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 제지1층 B150호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"카페누리","t":["커피/음료전문점"],"a":"경기 과천시 과천대로1길 11 1층 (갈현동)","z":"13840","lat":37.407568,"lng":126.977984,"x":false},{"n":"카페블리스","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 9 1층 101호 (갈현동,DX타워)","z":"13840","lat":37.415029,"lng":126.978282,"x":false},{"n":"카페상상","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 104호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"카페일마지오 광동제약점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7다길 52 1층 102호 (갈현동,광동과천타워)","z":"13840","lat":37.415848,"lng":126.977877,"x":false},{"n":"커스텀커피 과천지식정보타운점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 A동 114호 (갈현동,과천스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"커피나인 과천디테크타워","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 상가에이동 1층 107호 (갈현동)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"커피사피엔스 과천 디테크타워점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 A동 1층 134호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"커피사피엔스 과천어반허브점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 60 A동 1층 112호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"컴포즈커피 과천상상자이점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 121호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"컴포즈커피 과천스마트K점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 1층 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"킨(KEEN)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 A동 1층 131 일부호 (갈현동)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"킨커피(과천)중원엔지니어링(주)","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7다길 60 1층 103호 (갈현동,금강공업(주)과천사옥)","z":"13840","lat":37.415993,"lng":126.977398,"x":false},{"n":"타이거","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 115호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"타이거커피 과천어반허브점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7나길 60 A동 110호 (과천어반허브) (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"텐퍼센트 스페셜티커피 과천디테크타워점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 B동 111호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"템프커피","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 B동 115호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"투썸플레이스 과천정보타운점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 디테크타워과천 A동 1층 117호 118호 (갈현동)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"파스쿠찌 과천지식정보타운점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 46 107호, 108호 (갈현동)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"펄시커피 과천","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 65 1층 B125호 (갈현동)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"할리스 과천정보타운점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7가길 20 103호 일부,104호 (갈현동)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"히어커피 과천점","t":["커피/음료전문점"],"a":"경기 과천시 과천대로7길 20 지1층 B148호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"애슐리 과천점","t":["패밀리레스토랑"],"a":"경기 과천시 과천대로7가길 20 프리즘스퀘어1 1층 105-108호 (갈현동)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"뉴욕버거 과천지식정보타운점","t":["패스트푸드점"],"a":"경기 과천시 과천대로7나길 48 1층 1F-2호 (갈현동)","z":"13840","lat":37.417264,"lng":126.976681,"x":false},{"n":"루스터 버거앤치킨 과천스마트케이점","t":["패스트푸드점"],"a":"경기 과천시 과천대로7길 20 131호, 133호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"반올림피자 과천점","t":["패스트푸드점"],"a":"경기 과천시 과천대로7마길 34 101호 (갈현동)","z":"13840","lat":37.416269,"lng":126.981697,"x":false},{"n":"본도시락 과천지식정보타운점","t":["패스트푸드점"],"a":"경기 과천시 과천대로7길 20 과천 스마트케이 업무시설 제지1층 제비108호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"지티에스버거(GTS버거)","t":["패스트푸드점"],"a":"경기 과천시 과천대로7길 68 1층 101호 (갈현동,과천E타워)","z":"13840","lat":37.416707,"lng":126.976952,"x":false},{"n":"프랭크버거 갈현점","t":["패스트푸드점"],"a":"경기 과천시 과천대로7길 33 A동 124호 (갈현동,디테크타워)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"GS25 과천갈현점","t":["편의점"],"a":"경기 과천시 과천대로7나길 18, 1층 (갈현동 390-10)","z":"13840","lat":37.415623,"lng":126.978849,"x":false},{"n":"GS25 과천디테크A점","t":["편의점"],"a":"경기 과천시 과천대로7길 33, A동 120호 (갈현동 554, 디테크타워)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"GS25 과천디테크B점","t":["편의점"],"a":"경기 과천시 과천대로7길 33, B동 상가 B124호, B125호 (갈현동 554)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"GS25 과천상상자이점","t":["편의점"],"a":"경기 과천시 과천대로7길 65, B동 118호 (갈현동 456)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"GS25 과천센텀점","t":["편의점"],"a":"경기 과천시 과천대로7길 20, B101호, B102호 (갈현동 427-2)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"GS25 과천어반허브점","t":["편의점"],"a":"경기 과천시 과천대로7나길 60, 1층 C107, C108호 (갈현동 492)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"GS25 과천크리에이션점","t":["편의점"],"a":"경기 과천시 과천대로7길 46, 1층 (갈현동 443)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"GS25 과천포레드림점","t":["편의점"],"a":"경기 과천시 과천대로1길 11, 상가 3호 (갈현동 599, 일원)","z":"13840","lat":37.407568,"lng":126.977984,"x":false},{"n":"K7 과천스마트케이점","t":["편의점"],"a":"경기 과천시 과천대로7길 20 (갈현동, 과천 스마트케이 업무시설)A동 1층 104호","z":"13840","lat":null,"lng":null,"x":false},{"n":"과천디엠점","t":["편의점"],"a":"경기도 과천시 과천대로7나길 37 1층 102호","z":"13840","lat":37.416685,"lng":126.977731,"x":false},{"n":"세븐일레븐 과천스마트케이점","t":["편의점"],"a":"경기 과천시 과천대로7길 20 A동 1층 104호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"씨유(CU) 과천갈현점","t":["편의점"],"a":"경기 과천시 찬우물로 36 상가동 1층 101호 (갈현동,화이트스톤)","z":"13840","lat":37.416229,"lng":126.984105,"x":false},{"n":"씨유(CU) 과천디엠점","t":["편의점"],"a":"경기 과천시 과천대로7나길 37 1층 102호 (갈현동)","z":"13840","lat":37.416724,"lng":126.977661,"x":false},{"n":"씨유(CU)과천정보타운점","t":["편의점"],"a":"경기 과천시 과천대로7가길 20 1층 101호 일부 (갈현동)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"지에스25 과천갈현점","t":["편의점"],"a":"경기 과천시 과천대로7나길 18 1층 (갈현동)","z":"13840","lat":37.415623,"lng":126.978849,"x":false},{"n":"지에스25 과천디테크A점","t":["편의점"],"a":"경기 과천시 과천대로7길 33 A동 상가 120호 (갈현동,디테크타워)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"지에스25 과천디테크B점","t":["편의점","커피/음료전문점"],"a":"경기 과천시 과천대로7길 33 B상가동 B124호 B125호 (갈현동)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"지에스25 과천상상자이점","t":["편의점"],"a":"경기 과천시 과천대로7길 65 B동 118호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"지에스25 과천센텀점","t":["편의점"],"a":"경기 과천시 과천대로7길 20 B101호, B102호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"지에스25 과천어반허브점","t":["편의점"],"a":"경기 과천시 과천대로7나길 60 C동 107,108호 (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"지에스25 과천크리에이션점","t":["편의점"],"a":"경기 과천시 과천대로7길 46 112호,113호 (갈현동)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"지에스25 과천포레드림점","t":["편의점"],"a":"경기 과천시 과천대로1길 15 S001동 3호 (갈현동,과천포레드림)","z":"13840","lat":37.407642,"lng":126.977604,"x":false},{"n":"(주)더마더","t":["한식"],"a":"경기 과천시 찬우물로 28 (갈현동)","z":"13840","lat":37.417006,"lng":126.984582,"x":false},{"n":"(주)일삼육오푸드","t":["한식"],"a":"경기 과천시 과천대로7길 20 과천 스마트케이 업무시설 219-224호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"(주)쿠킹트리","t":["한식"],"a":"경기 과천시 과천대로7길 33 디테크타워과천 상가비동 213.214.215호 (갈현동)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"가마솥 순대국밥 과천지식정보타운점","t":["한식"],"a":"경기 과천시 과천대로7길 20 제1층 123,124호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"가마솥회관","t":["한식"],"a":"경기 과천시 과천대로 161 (갈현동)","z":"13840","lat":37.416092,"lng":126.984542,"x":false},{"n":"강남밥상앤맥주광장","t":["한식"],"a":"경기 과천시 과천대로7나길 37 2층 201호 디엠 (갈현동,디 엠(The M))","z":"13840","lat":37.416724,"lng":126.977661,"x":false},{"n":"겸상","t":["한식"],"a":"경기 과천시 과천대로7길 20 B동 1층 158호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"경이로운 금돈","t":["한식"],"a":"경기 과천시 과천대로7길 46 109호 (갈현동,과천CreationTower)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"고옴탱","t":["한식"],"a":"경기 과천시 과천대로7나길 60 B1층 002호 (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"과천화이루","t":["한식"],"a":"경기 과천시 과천대로7길 33 A동 1층 116호 (갈현동,디 테크 타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"굿푸드","t":["한식"],"a":"경기 과천시 과천대로7길 65 지하층 B002호, B003호, B004호, B005호, B006호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"깡우동과천지식정보타운점","t":["한식"],"a":"경기 과천시 과천대로7길 20 B동 1층 155호 (갈현동,과천스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"나주면옥","t":["한식"],"a":"경기 과천시 찬우물로 21-4 1층 (갈현동)","z":"13840","lat":37.416799,"lng":126.985042,"x":false},{"n":"농장식구들","t":["한식"],"a":"경기 과천시 찬우물로 22-13 1층,2층 (갈현동)","z":"13840","lat":37.417478,"lng":126.985336,"x":false},{"n":"달스톤","t":["한식"],"a":"경기 과천시 과천대로7길 20 A동 128호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"동남집 과천지식정보타운점","t":["한식"],"a":"경기 과천시 과천대로7나길 37 1층 101호 (갈현동,디 엠(The M))","z":"13840","lat":37.416724,"lng":126.977661,"x":false},{"n":"두손푸드","t":["한식"],"a":"경기 과천시 가일로 49 1,2층 (갈현동)","z":"13840","lat":37.415796,"lng":126.979728,"x":false},{"n":"등촌샤브칼국수 과천지식정보타운점","t":["한식"],"a":"경기 과천시 과천대로7나길 37 1층 103호 (갈현동,디 엠(The M))","z":"13840","lat":37.416724,"lng":126.977661,"x":false},{"n":"런치타임","t":["한식"],"a":"경기 과천시 과천대로7나길 60 B1층008호 (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"류창희국수과천스마트K점","t":["한식"],"a":"경기 과천시 과천대로7길 20 지1층 B134호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"맛슐랭","t":["한식"],"a":"경기 과천시 과천대로7길 33 B동 1층 116호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"못난이대구탕","t":["한식"],"a":"경기 과천시 과천대로7길 20 과천 스마트케이 업무시설 B동 1층 138호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"무래무거","t":["한식"],"a":"경기 과천시 김영철길 19 (갈현동)","z":"13840","lat":37.417701,"lng":126.981835,"x":false},{"n":"방일해장국과천지식정보타운점","t":["한식"],"a":"경기 과천시 과천대로7길 20 A동 1층 107호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"보리촌곤드레","t":["한식"],"a":"경기 과천시 삼현로 53-107 1층 (갈현동)","z":"13840","lat":37.416623,"lng":126.972886,"x":false},{"n":"복만당 과천지식정보타운점","t":["한식"],"a":"경기 과천시 과천대로7나길 20 101호 (갈현동,젠하우스)","z":"13840","lat":37.415577,"lng":126.978975,"x":false},{"n":"본죽and비빔밥 과천정보타운점","t":["한식"],"a":"경기 과천시 과천대로7길 46 101호 (갈현동,과천CreationTower)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"봉평메밀막국수","t":["한식"],"a":"경기 과천시 과천대로 163 (갈현동)","z":"13840","lat":37.416211,"lng":126.984748,"x":false},{"n":"산고을추어탕","t":["한식"],"a":"경기 과천시 찬우물로 24-11 1층 (갈현동)","z":"13840","lat":37.418181,"lng":126.984891,"x":false},{"n":"삼등집","t":["한식"],"a":"경기 과천시 과천대로7길 20 A동 129, 130호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"삼청당 과천스마트K점","t":["한식"],"a":"경기 과천시 과천대로7길 20 지하1층 137호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"상월","t":["한식"],"a":"경기 과천시 과천대로7길 26 B동 지층 비153호 (갈현동)","z":"13840","lat":37.41464,"lng":126.97932,"x":false},{"n":"샤브올데이 과천주차타워점","t":["한식"],"a":"경기 과천시 과천대로5길 6 2층 (갈현동,과천아이플렉스)","z":"13840","lat":37.410943,"lng":126.979855,"x":false},{"n":"서울정 양평해장","t":["한식"],"a":"경기 과천시 가일로 15-6 1층 (갈현동)","z":"13840","lat":37.416119,"lng":126.982673,"x":false},{"n":"서울현방 과천점","t":["한식"],"a":"경기 과천시 과천대로7나길 9 1층 103,104호 (갈현동,DX타워)","z":"13840","lat":37.415029,"lng":126.978282,"x":false},{"n":"손의손 과천점","t":["한식"],"a":"경기 과천시 과천대로7다길 16 1층 (갈현동)","z":"13840","lat":37.415381,"lng":126.979755,"x":false},{"n":"솥삼조","t":["한식"],"a":"경기 과천시 과천대로7마길 3 1층 101호 (갈현동,루이스스테이)","z":"13840","lat":37.41508,"lng":126.981023,"x":false},{"n":"숲속의 옹달샘","t":["한식"],"a":"경기 과천시 가일1로 30 1층 (갈현동)","z":"13840","lat":37.418682,"lng":126.978791,"x":false},{"n":"신의주순대국밥","t":["한식"],"a":"경기 과천시 과천대로7길 65 113호,114호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"얌샘김밥 과천크리에이션타워점","t":["한식"],"a":"경기 과천시 과천대로7길 46 1층 111호 (갈현동,과천Creation Tower)","z":"13840","lat":37.415016,"lng":126.977295,"x":false},{"n":"어울림반상","t":["한식"],"a":"경기 과천시 과천대로7나길 60 A동 107호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"영자네한식뷔페","t":["한식"],"a":"경기 과천시 과천대로7길 20 지층 비106호, 비107호, 비110호, 비114호 (갈현동,과천스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"오몽","t":["한식"],"a":"경기 과천시 과천대로7길 26 B동 147호 (갈현동,과천 스마트케이업무시설)","z":"13840","lat":37.41464,"lng":126.97932,"x":false},{"n":"오븐마루 과천상상자이점","t":["한식","일반음식점 기타"],"a":"경기 과천시 과천대로7길 65 B동 1층 112호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"옥된장 과천점","t":["한식"],"a":"경기 과천시 과천대로7길 20 B동 1층 139,140,141호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"우리곳간2호점","t":["한식"],"a":"경기 과천시 과천대로7길 33 상가B동 1층 101호 (갈현동,디 테크 타워 과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"우아한전","t":["한식"],"a":"경기 과천시 과천대로7길 20 A동 B119호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"우장관","t":["한식","정육점"],"a":"경기 과천시 과천대로7길 65 A동 116,117호 (갈현동,과천상상자이타워)","z":"13840","lat":37.416544,"lng":126.97652,"x":false},{"n":"육대장 과천지식정보타운점","t":["한식"],"a":"경기 과천시 과천대로7나길 60 c동 105,106호 (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"육회왕자연어공주 지정타점","t":["한식"],"a":"경기 과천시 과천대로7길 33 A동 121호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"일품 양평해장국 디테크점","t":["한식"],"a":"경기 과천시 과천대로7길 33 B동 110호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"전주 현대옥 과천디테크점","t":["한식"],"a":"경기 과천시 과천대로7길 33 B동 102호 (갈현동,디테크타워 과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"정가네","t":["한식"],"a":"경기 과천시 과천대로7길 20 B동 134호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"정통삼계탕","t":["한식"],"a":"경기 과천시 과천대로7나길 60 B006호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"주식회사 놀멍쉬멍","t":["한식"],"a":"경기 과천시 과천대로7나길 34 A-202호,A-203호 가비아앳 (갈현동)","z":"13840","lat":37.416931,"lng":126.978239,"x":false},{"n":"주식회사 혜와","t":["한식"],"a":"경기 과천시 과천대로7마길 5 (갈현동)","z":"13840","lat":37.415156,"lng":126.981059,"x":false},{"n":"진국본가","t":["한식"],"a":"경기 과천시 과천대로7길 20 123호124호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"진동안집","t":["한식"],"a":"경기 과천시 찬우물로 16 (갈현동)","z":"13840","lat":37.417378,"lng":126.985486,"x":false},{"n":"참우돈가 과천점","t":["한식"],"a":"경기 과천시 과천대로7길 12 105호 106호 (갈현동)","z":"13840","lat":37.413414,"lng":126.98052,"x":false},{"n":"청국장앤스토리","t":["한식"],"a":"경기 과천시 과천대로7길 20 B동 115호 (갈현동,과천 스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"한가람부페","t":["한식"],"a":"경기 과천시 과천대로7길 20 제지동 제지1층 114호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"한상차림 코다리명가","t":["한식"],"a":"경기 과천시 삼현로 53-87 1,2층 (갈현동)","z":"13840","lat":37.415991,"lng":126.975146,"x":false},{"n":"한양","t":["한식"],"a":"경기 과천시 과천대로7길 20 152,153,154호 (갈현동,과천스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"한촌설렁탕 과천지식센터점(기룡산업)","t":["한식"],"a":"경기 과천시 과천대로7길 20 1층 161호,164호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"한칼","t":["한식"],"a":"경기 과천시 과천대로7길 20 1층 136호, 137호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"한판집","t":["한식"],"a":"경기 과천시 과천대로7길 20 B동 149호,150호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"행복한순정감자탕","t":["한식"],"a":"경기 과천시 과천대로7길 20 118,119,120호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"호랭이 부엌","t":["한식"],"a":"경기 과천시 과천대로7길 20 1층 135호 (갈현동,과천스마트케이업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"갈현푸드","t":["휴게음식점"],"a":"경기 과천시 과천대로7나길 60 B2-010A호 (갈현동,과천어반허브)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"도토리김밥","t":["휴게음식점"],"a":"경기 과천시 과천대로7길 20 B동 146호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"바르다김선생 과천지식정보타운점","t":["휴게음식점"],"a":"경기 과천시 과천대로7가길 20 102호 일부 (갈현동,프리즘스퀘어1)","z":"13840","lat":37.414147,"lng":126.980928,"x":false},{"n":"샐러디 과천지식정보타운점","t":["휴게음식점"],"a":"경기 과천시 과천대로7길 20 148호 (갈현동,과천 스마트케이 업무시설)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"스마트 델리","t":["휴게음식점"],"a":"경기 과천시 과천대로7길 20 과천 스마트케이 업무시설 제지1층 B126호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"스마트델리","t":["휴게음식점"],"a":"경기 과천시 과천대로7길 20 과천 스마트케이 업무시설 지층B126호 (갈현동)","z":"13840","lat":37.413847,"lng":126.979448,"x":false},{"n":"슬로우캘리 과천지식정보타운점","t":["휴게음식점"],"a":"경기 과천시 과천대로7나길 60 A동 113호 (과천어반허브) (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"아찌","t":["휴게음식점"],"a":"경기 과천시 과천대로7나길 37 104호 (갈현동,디 엠(The M))","z":"13840","lat":37.416724,"lng":126.977661,"x":false},{"n":"퍼떡","t":["휴게음식점"],"a":"경기 과천시 과천대로7길 33 A동 112호 (갈현동,디테크타워과천)","z":"13840","lat":37.413579,"lng":126.977879,"x":false},{"n":"호화온도 어반허브점","t":["휴게음식점"],"a":"경기 과천시 과천대로7나길 60 B1층 004호 (갈현동)","z":"13840","lat":37.417296,"lng":126.975285,"x":false},{"n":"스타벅스 (전국 매장)","t":["커피/음료전문점"],"a":"매장에서 직접 결제할 때만 됩니다. 사이렌오더·충전·상품권은 안 됩니다.","z":"06142","lat":null,"lng":null,"x":true}]</script>
+<script>
+(function(){
+  var PLACES = JSON.parse(document.getElementById('pl-data').textContent);
+  var CAT = {
+    meal: ['한식','중식','양식','일식/생선회집','패스트푸드점','일반음식점 기타',
+           '패밀리레스토랑','부페','일반주점','정육점','기타 식품','일반잡화판매점'],
+    cafe: ['커피/음료전문점','제과점/아이스크림점','휴게음식점','서점'],
+    cvs:  ['편의점']
+  };
+  var state = { area:'all', cat:'all', q:'' };
+  var map, info, ready = false, first = true, markers = [];
+  var OFFICE = { lat: 37.412618, lng: 127.098138, n: '휴온스글로벌 사옥' };
+  var CENTER = { pangyo: [37.412618, 127.098138, 17],
+                 gwacheon: [37.415007, 126.978538, 15],
+                 all: [37.412618, 127.098138, 17] };
+
+
+  function area(p){ return p.z === '13840' ? 'gwacheon' : 'pangyo'; }
+  function cat(p){
+    for (var k in CAT){ for (var i=0;i<p.t.length;i++){ if (CAT[k].indexOf(p.t[i]) > -1) return k; } }
+    return 'meal';
+  }
+  PLACES.forEach(function(p){ p._a = area(p); p._c = cat(p); });
+
+  function match(p){
+    if (state.area !== 'all' && p._a !== state.area) return false;
+    if (state.cat !== 'all' && p._c !== state.cat) return false;
+    if (state.q && (p.n + ' ' + p.a).toLowerCase().indexOf(state.q) < 0) return false;
+    return true;
+  }
+
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(ch){
+    return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[ch]; }); }
+
+  // 지금 지도에 보이는 범위 안인지
+  function inView(p){
+    if (!ready || !document.getElementById('pl-viewport').checked) return true;
+    if (!p.lat) return true;                 // 좌표가 없는 곳은 늘 남긴다
+    return map.getBounds().hasLatLng(new naver.maps.LatLng(p.lat, p.lng));
+  }
+
+  function renderList(){
+    var hit = PLACES.filter(match);
+    var shown = hit.filter(inView);
+    document.getElementById('pl-count').textContent =
+      shown.length + '곳' + (shown.length === PLACES.length ? '' : ' / 전체 ' + PLACES.length + '곳');
+
+    var list = document.getElementById('pl-list');
+    list.innerHTML = '';
+    if (!shown.length){
+      list.innerHTML = '<p style="padding:16px;color:#46607F;margin:0">' +
+        '이 범위에는 사용처가 없습니다. 지도를 옮기거나 넓혀 보세요.</p>';
+      return;
+    }
+    shown.forEach(function(p){
+      var b = document.createElement('button');
+      b.className = 'pl-item';
+      b.innerHTML = '<b>' + esc(p.n) + '</b><span class="pl-meta">' +
+        '<span class="pl-tag">' + esc(p.t[0]) + '</span>' + esc(p.a) + '</span>';
+      b.addEventListener('click', function(){ focus(p); });
+      list.appendChild(b);
+    });
+  }
+
+  function draw(){
+    var hit = PLACES.filter(match);
+    renderList();
+    if (!ready) return;
+    markers.forEach(function(m){ m.setMap(null); });
+    markers = [];
+    if (info) info.close();
+
+    hit.forEach(function(p){
+      if (!p.lat) return;
+      var ll = new naver.maps.LatLng(p.lat, p.lng);
+      var m = new naver.maps.Marker({
+        position: ll, map: map,
+        icon: { content: '<i class="pl-pin"></i>',
+                anchor: new naver.maps.Point(18, 18) },
+        title: p.n,
+        zIndex: 10
+      });
+      naver.maps.Event.addListener(m, 'click', function(){ open(p, m); });
+      markers.push(m);
+    });
+    if (first){
+      first = false;
+      move('all');
+    }
+  }
+
+  // 지역 단추를 눌렀을 때만 자리를 옮긴다. 업종·검색은 보던 화면 그대로 둔다.
+  function move(key){
+    var c = CENTER[key] || CENTER.all;
+    map.setCenter(new naver.maps.LatLng(c[0], c[1]));
+    map.setZoom(c[2]);
+  }
+
+  function open(p, m){
+    if (!info) info = new naver.maps.InfoWindow({ borderWidth: 0, disableAnchor: false,
+      backgroundColor: 'transparent', pixelOffset: new naver.maps.Point(0, -4) });
+    info.setContent('<div class="pl-pop"><b>' + esc(p.n) + '</b>' +
+      esc(p.t.join(' · ')) + '<br>' + esc(p.a) + '</div>');
+    info.open(map, m);
+  }
+
+  function focus(p){
+    if (!ready || !p.lat) return;
+    map.setCenter(new naver.maps.LatLng(p.lat, p.lng));
+    map.setZoom(18);
+    for (var i=0;i<markers.length;i++){
+      var pos = markers[i].getPosition();
+      if (Math.abs(pos.lat() - p.lat) < 1e-6 && Math.abs(pos.lng() - p.lng) < 1e-6){
+        open(p, markers[i]); break;
+      }
+    }
+    document.getElementById('pl-map').scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+
+  document.querySelectorAll('.pl-chip').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.dataset.area ? 'area' : 'cat';
+      state[key] = btn.dataset.area || btn.dataset.cat;
+      document.querySelectorAll('.pl-chip').forEach(function(o){
+        if ((o.dataset.area ? 'area' : 'cat') === key){
+          o.setAttribute('aria-pressed', o === btn ? 'true' : 'false');
+        }
+      });
+      draw();
+      if (key === 'area' && ready) move(state.area);
+    });
+  });
+  document.getElementById('pl-q').addEventListener('input', function(e){
+    state.q = e.target.value.trim().toLowerCase(); draw();
+  });
+
+  document.getElementById('pl-viewport').addEventListener('change', renderList);
+
+  var meMarker;
+  document.getElementById('pl-here').addEventListener('click', function(){
+    var btn = this;
+    if (!ready || !navigator.geolocation){
+      alert('현재 위치를 쓸 수 없는 환경입니다.'); return;
+    }
+    btn.textContent = '찾는 중…';
+    navigator.geolocation.getCurrentPosition(function(pos){
+      btn.textContent = '📍 현재 위치';
+      var ll = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+      if (meMarker) meMarker.setMap(null);
+      meMarker = new naver.maps.Marker({ position: ll, map: map, zIndex: 100,
+        icon: { content: '<i class="pl-me"></i>', anchor: new naver.maps.Point(9, 9) } });
+      map.setCenter(ll); map.setZoom(17);
+    }, function(){
+      btn.textContent = '📍 현재 위치';
+      alert('현재 위치를 가져오지 못했습니다.\n브라우저에서 위치 권한을 허용해 주세요.');
+    }, { enableHighAccuracy: true, timeout: 8000 });
+  });
+
+  function noMap(){
+    document.getElementById('pl-map').innerHTML =
+      '<p style="padding:18px;color:#46607F">지도를 불러오지 못했습니다. 아래 목록으로 확인해 주세요.</p>';
+    draw();
+  }
+
+  function init(){
+    if (typeof naver === 'undefined' || !naver.maps){ noMap(); return; }
+    map = new naver.maps.Map('pl-map', {
+      center: new naver.maps.LatLng(37.4035, 127.0975), zoom: 11,
+      zoomControl: true, zoomControlOptions: { position: naver.maps.Position.TOP_LEFT },
+      scaleControl: false, mapDataControl: false, logoControlOptions: { position: naver.maps.Position.BOTTOM_RIGHT }
+    });
+    naver.maps.Event.addListener(map, 'idle', renderList);
+    // 빈 곳을 누르면 말풍선을 닫는다 (마커를 누른 경우는 마커 쪽에서 다시 연다)
+    naver.maps.Event.addListener(map, 'click', function(){ if (info) info.close(); });
+    naver.maps.Event.once(map, 'init', function(){
+      ready = true;
+      new naver.maps.Marker({
+        position: new naver.maps.LatLng(OFFICE.lat, OFFICE.lng), map: map,
+        icon: { content: '<i class="pl-home">사옥</i>', anchor: new naver.maps.Point(17, 17) },
+        title: OFFICE.n,
+        zIndex: 50
+      });
+      draw();
+    });
+    draw();
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
 </script>
 </body>
 </html>
