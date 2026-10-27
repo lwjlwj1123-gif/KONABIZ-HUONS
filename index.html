@@ -305,13 +305,16 @@
     .shot-frame{max-width:70%}
     .shot-frame.app{max-width:170px}
     .wrap{max-width:none;padding:0}
-    section{padding:20px 0}
+    section{padding:20px 0 0}
+    section .wrap > :last-child{margin-bottom:0}
+    section:not(#start){break-before:page}
     .pl-pl{columns:3;column-gap:14px}
+    /* 번호는 제목과 같은 줄에 두어 페이지가 넘어가도 함께 움직이게 */
+    .step{display:grid;grid-template-columns:28px 1fr auto;
+      column-gap:16px;align-items:start;margin-left:-44px;break-inside:avoid}
+    .step > *{grid-column:2}
+    .step > .dot{position:static;grid-column:1;grid-row:1}
     /* 앱 캡처가 있는 단계는 설명 왼쪽 · 캡처 오른쪽으로 나란히 */
-    .step:has(.shot-frame.app){display:grid;grid-template-columns:28px 1fr auto;
-      column-gap:16px;align-items:start;break-inside:avoid;margin-left:-44px}
-    .step:has(.shot-frame.app) > *{grid-column:2}
-    .step:has(.shot-frame.app) > .dot{position:static;grid-column:1;grid-row:1}
     .step:has(.shot-frame.app) > figure,
     .step:has(.shot-frame.app) > .shots{grid-column:3;grid-row:1 / span 9;margin:0}
     #tips{break-inside:avoid}
