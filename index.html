@@ -305,6 +305,7 @@
     .shot-frame{max-width:70%}
     .shot-frame.app{max-width:170px}
     .wrap{max-width:none;padding:0}
+    footer .wrap{padding:0 20px}
     section{padding:20px 0 0}
     section .wrap > :last-child{margin-bottom:0}
     section:not(#start){break-before:page}
@@ -313,7 +314,7 @@
     .step{display:grid;grid-template-columns:28px 1fr auto;
       column-gap:16px;align-items:start;margin-left:-44px;break-inside:avoid}
     .step > *{grid-column:2}
-    .step > .dot{position:static;grid-column:1;grid-row:1}
+    .step > .dot{position:static;grid-column:1;grid-row:1;box-shadow:none}
     /* 앱 캡처가 있는 단계는 설명 왼쪽 · 캡처 오른쪽으로 나란히 */
     .step:has(.shot-frame.app) > figure,
     .step:has(.shot-frame.app) > .shots{grid-column:3;grid-row:1 / span 9;margin:0}
@@ -1343,6 +1344,15 @@
     history.replaceState(null, '', location.pathname + location.search);
     window.scrollTo({ top:0, behavior:'smooth' });
   }
+  // 인쇄(PDF) 때는 FAQ 답까지 보이도록 모두 펼치고, 끝나면 원래대로
+  var faqClosed = [];
+  window.addEventListener('beforeprint', function(){
+    faqClosed = [].filter.call(document.querySelectorAll('details.faq'), function(d){ return !d.open; });
+    faqClosed.forEach(function(d){ d.open = true; });
+  });
+  window.addEventListener('afterprint', function(){
+    faqClosed.forEach(function(d){ d.open = false; });
+  });
   if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
   if(location.hash){ history.replaceState(null, '', location.pathname + location.search); }
   window.scrollTo(0, 0);
