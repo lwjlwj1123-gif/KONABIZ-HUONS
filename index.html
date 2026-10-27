@@ -296,13 +296,24 @@
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
   /* ---------- print / PDF ---------- */
+  @page{size:A4;margin:12mm}
   @media print{
     .topbar,.pdf-btn{display:none}
     body{background:#fff}
     .hero{padding-top:20px}
     .hero-card{width:150px}
     .shot-frame{max-width:70%}
-    #register{break-before:page}
+    .shot-frame.app{max-width:170px}
+    .wrap{max-width:none;padding:0}
+    section{padding:20px 0}
+    .pl-pl{columns:3;column-gap:14px}
+    /* 앱 캡처가 있는 단계는 설명 왼쪽 · 캡처 오른쪽으로 나란히 */
+    .step:has(.shot-frame.app){display:grid;grid-template-columns:28px 1fr auto;
+      column-gap:16px;align-items:start;break-inside:avoid;margin-left:-44px}
+    .step:has(.shot-frame.app) > *{grid-column:2}
+    .step:has(.shot-frame.app) > .dot{position:static;grid-column:1;grid-row:1}
+    .step:has(.shot-frame.app) > figure,
+    .step:has(.shot-frame.app) > .shots{grid-column:3;grid-row:1 / span 9;margin:0}
     #tips{break-inside:avoid}
     .rail::before{display:none}
     .sec-head,.sec-sub,.sec-links,.step h3,.step p{break-after:avoid}
@@ -755,7 +766,7 @@
         <figure class="shot-frame app">
           <div class="mark-wrap">
             <img class="shot" src="assets/app-08-approve-done.png" width="736" height="1634" alt="식대 승인 완료 내역" />
-            <span class="mk-box" style="left:63.3%;top:11.7%;width:17.7%;height:4.6%"></span>
+            <span class="mk-box" style="left:64%;top:10.3%;width:16.6%;height:5.7%"></span>
           </div>
         </figure>
       </div>
