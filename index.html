@@ -154,6 +154,7 @@
   .sub-h{font-size:21px;font-weight:800;margin:30px 0 4px;
     padding-top:24px;border-top:1px solid var(--line)}
   .shots{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}
+  @media (min-width:700px){.step.shots-below .shot-frame.app{max-width:min(258px,calc((100% - 28px) / 3))}}
   .shot-frame img.shot{display:block;width:100%;height:auto;border-radius:7px}
   .shot-frame figcaption{font:600 13px/1.4 var(--mono);color:var(--ink-soft);
     margin-top:8px;letter-spacing:0}
@@ -321,6 +322,9 @@
     /* 앱 캡처가 있는 단계는 설명 왼쪽 · 캡처 오른쪽으로 나란히 */
     .step:has(.shot-frame.app) > figure,
     .step:has(.shot-frame.app) > .shots{grid-column:3;grid-row:1 / span 9;margin:0}
+    /* 캡처가 3장인 단계는 설명 아래로 */
+    .step.shots-below:has(.shot-frame.app) > .shots{grid-column:2 / span 2;grid-row:auto;margin-top:8px}
+    .step.shots-below .shot-frame.app{max-width:250px}
     #tips{break-inside:avoid}
     /* 섹션 제목이 페이지 끝에 홀로 남지 않도록 아래 공간을 미리 확보 (음수 여백으로 실제 간격은 그대로) */
     .sec-head,.sec-sub,.sec-links{padding-bottom:240px;break-inside:avoid}
@@ -360,12 +364,12 @@
         <img class="hero-logo" src="assets/huons-logo.png" alt="휴온스그룹" />
         <div class="eyebrow">휴온스그룹 임직원용</div>
         <h1>코나비즈 이용 가이드<br><b>앱 설치부터 결제까지</b></h1>
-        <div class="asof">2026.11.11 기준 작성</div>
+        <div class="asof">2026.11.17 기준 작성</div>
         <p class="lead">복지카드를 받으셨나요?<br>
           코나카드 앱 등록부터 평소 결제, 그리고 알아두면 좋은 기능까지<br>
           이 한 장에 정리했습니다.<br>
           위에서부터 순서대로 따라오시면 됩니다.</p>
-        <a class="pdf-btn" href="assets/konabiz-huons-guide_2026.11.11.pdf" download="KONABIZ_휴온스그룹_이용가이드_2026.11.11.pdf">⬇ PDF 다운로드</a>
+        <a class="pdf-btn" href="assets/konabiz-huons-guide_2026.11.17.pdf" download="KONABIZ_휴온스그룹_이용가이드_2026.11.17.pdf">⬇ PDF 다운로드</a>
       </div>
       <img class="hero-card" src="assets/huons-card.png" alt="휴온스그룹 복지카드" />
     </div>
@@ -551,6 +555,36 @@
       <div class="step"><div class="dot">3</div>
         <h3>사용내역 확인</h3>
         <p>카드명 <b>아래 금액</b>을 누르면 결제 내역, 카드명 <b>위 포인트</b>를 누르면 <b>포인트 종류별</b> 사용내역을 볼 수 있습니다.</p>
+      </div>
+
+      <div class="step shots-below"><div class="dot">4</div>
+        <h3>포인트 사용 설정 (on/off)</h3>
+        <p>카드명 위 <b>카드포인트</b>를 누르면 포인트별 잔액과 <b>결제되는 순서</b>가 보입니다.<br>
+          <b>[사용 설정]</b>을 누르면 포인트마다 결제 시 사용할지 직접 정할 수 있습니다.</p>
+        <p><b>켜짐(자동 사용)</b> &mdash; 결제할 때마다 자동으로 사용됩니다.<br>
+          <b>꺼짐(미사용)</b> &mdash; 결제 시 사용되지 않습니다.</p>
+        <p><b>결제되는 순서(우선순위)는 회사에서 정하며, 개인이 변경할 수 없습니다.</b></p>
+        <p class="muted">사용 여부를 바꿀 수 있는 포인트만 목록에 보입니다. 화면은 예시이며, 실제 포인트 이름은 다를 수 있습니다.</p>
+        <div class="shots">
+          <figure class="shot-frame app">
+            <div class="mark-wrap">
+              <img class="shot" src="assets/app-13-point-home.png" width="720" height="1479" alt="카드명 위 카드포인트를 누르는 위치" />
+              <span class="mk-box" style="left:10%;top:10.9%;width:26%;height:4%"></span>
+            </div>
+          </figure>
+          <figure class="shot-frame app">
+            <div class="mark-wrap">
+              <img class="shot" src="assets/app-14-point-sheet.png" width="720" height="1479" alt="카드포인트 결제 순서와 사용 설정 버튼" />
+              <span class="mk-box" style="left:9%;top:77.8%;width:81.5%;height:5.3%"></span>
+            </div>
+          </figure>
+          <figure class="shot-frame app">
+            <div class="mark-wrap">
+              <img class="shot" src="assets/app-15-point-setting.png" width="720" height="1479" alt="포인트별 사용 여부 설정 화면" />
+              <span class="mk-box" style="left:4%;top:18.3%;width:92%;height:15.6%"></span>
+            </div>
+          </figure>
+        </div>
       </div>
     </div>
 
